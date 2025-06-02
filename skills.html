@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills & Expertise - Brian Miller</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0d9488;
+            --primary-light: #f0fdfa;
+            --primary-dark: #0f766e;
+            --text: #1f2937;
+            --text-light: #6b7280;
+            --border: #e5e7eb;
+            --background: #f9fafb;
+            --white: #ffffff;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--background);
+            -webkit-font-smoothing: antialiased;
+            padding-top: 80px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .skill-category {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .skill-category h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .skill-category h2 i {
+            font-size: 1.25em;
+        }
+        
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+        
+        .skill-tag {
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid var(--border);
+        }
+        
+        .experience-highlights {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 4rem;
+        }
+        
+        .experience-highlights h2 {
+            color: var(--primary-dark);
+            margin-bottom: 2rem;
+            text-align: center;
+            font-size: 2rem;
+        }
+        
+        .experience-item {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .experience-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+        }
+        
+        .experience-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+        
+        .experience-company {
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        
+        .experience-period {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        .experience-description {
+            margin-top: 1rem;
+        }
+        
+        .experience-description ul {
+            list-style: none;
+            padding-left: 1.5rem;
+        }
+        
+        .experience-description li {
+            position: relative;
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+        }
+        
+        .experience-description li:before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="logo">ContextOverControl.com</a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="skills.html" class="active">Skills</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="page-header">
+            <h1>Skills & Expertise</h1>
+            <p>Strategic product leader with a proven track record of driving successful product initiatives and leading high-performing teams.</p>
+        </div>
+
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h2><i class="fas fa-sitemap"></i>Product Strategy</h2>
+                <div class="skills-list">
+                    <span class="skill-tag">Product Vision</span>
+                    <span class="skill-tag">Roadmapping</span>
+                    <span class="skill-tag">GTM Strategy</span>
+                    <span class="skill-tag">Market Analysis</span>
+                    <span class="skill-tag">Competitive Analysis</span>
+                    <span class="skill-tag">Customer Research</span>
+                    <span class="skill-tag">OKRs & KPIs</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h2><i class="fas fa-tasks"></i>Agile & Process</h2>
+                <div class="skills-list">
+                    <span class="skill-tag">Agile Coaching</span>
+                    <span class="skill-tag">Scrum</span>
+                    <span class="skill-tag">Kanban</span>
+                    <span class="skill-tag">SAFe</span>
+                    <span class="skill-tag">LeSS</span>
+                    <span class="skill-tag">Sprint Planning</span>
+                    <span class="skill-tag">Retrospectives</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h2><i class="fas fa-tools"></i>Tools & Technologies</h2>
+                <div class="skills-list">
+                    <span class="skill-tag">Jira</span>
+                    <span class="skill-tag">Confluence</span>
+                    <span class="skill-tag">Airtable</span>
+                    <span class="skill-tag">Looker</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Figma</span>
+                    <span class="skill-tag">Miro</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h2><i class="fas fa-users"></i>Leadership</h2>
+                <div class="skills-list">
+                    <span class="skill-tag">Team Leadership</span>
+                    <span class="skill-tag">Stakeholder Management</span>
+                    <span class="skill-tag">Cross-functional Collaboration</span>
+                    <span class="skill-tag">Mentoring</span>
+                    <span class="skill-tag">Conflict Resolution</span>
+                    <span class="skill-tag">Public Speaking</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="experience-highlights">
+            <h2>Experience Highlights</h2>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <h3 class="experience-title">Product Operations Manager</h3>
+                        <p class="experience-company">Redox</p>
+                    </div>
+                    <span class="experience-period">Dec 2022 - Present</span>
+                </div>
+                <div class="experience-description">
+                    <ul>
+                        <li>Led the annual product planning process, collaborating with product, engineering, and executive leadership to define strategic priorities, align roadmaps, and establish OKRs.</li>
+                        <li>Developed and implemented a standardized GTM framework, coordinating cross-functional teams to ensure launch readiness and successful launch for multiple key product releases each quarter.</li>
+                        <li>Built and managed a centralized voice of the customer program, synthesizing feedback from commercial teams into actionable insights that directly informed roadmap prioritization and product improvements.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <h3 class="experience-title">Agile Coach</h3>
+                        <p class="experience-company">Redox</p>
+                    </div>
+                    <span class="experience-period">Apr 2020 - Dec 2022</span>
+                </div>
+                <div class="experience-description">
+                    <ul>
+                        <li>Coached and mentored 3 engineering teams on agile principles, facilitating core events to improve delivery, resulting in enhanced planning accuracy, predictable delivery cadence, and stronger continuous improvement cycles.</li>
+                        <li>Developed and implemented a framework for tracking key developer productivity and flow metrics, providing actionable insights for teams and leadership.</li>
+                        <li>Facilitated blameless post-mortems for customer-impact incidents, driving root cause analysis and process improvements.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Brian Miller</h3>
+                    <p>Building digital experiences that make a difference.</p>
+                </div>
+                <div class="footer-contact">
+                    <h4>Get In Touch</h4>
+                    <p><i class="fas fa-envelope"></i> brian@contextovercontrol.com</p>
+                    <div class="social-links">
+                        <a href="https://github.com/brian-miller-r" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/bjosephmiller/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="mailto:brian@contextovercontrol.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> Brian Miller. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Update current year in footer
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+            
+            // Mobile menu toggle
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    navLinks.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

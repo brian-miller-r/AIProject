@@ -3,10 +3,243 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume - Brian Miller</title>
+    <title>Brian Miller - Resume</title>
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0d9488;
+            --primary-light: #f0fdfa;
+            --text: #1f2937;
+            --text-light: #6b7280;
+            --border: #e5e7eb;
+            --background: #f9fafb;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--background);
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .resume {
+            max-width: 900px;
+            margin: 2rem auto;
+            background: var(--white);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .resume-header {
+            padding: 2.5rem 3rem;
+            background: var(--primary);
+            color: white;
+            text-align: center;
+        }
+        
+        .resume-header h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .resume-header p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+        
+        .resume-content {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .sidebar {
+            flex: 1;
+            min-width: 280px;
+            padding: 2.5rem;
+            background: var(--primary-light);
+            border-right: 1px solid var(--border);
+        }
+        
+        .main-content {
+            flex: 2;
+            padding: 2.5rem;
+        }
+        
+        .section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title i {
+            margin-right: 0.75rem;
+            font-size: 1.1em;
+        }
+        
+        .contact-info {
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .contact-item:hover {
+            color: var(--primary);
+        }
+        
+        .contact-item i {
+            width: 24px;
+            color: var(--primary);
+            margin-right: 0.75rem;
+            text-align: center;
+        }
+        
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .skill-tag {
+            background: var(--white);
+            color: var(--primary);
+            padding: 0.35rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid var(--border);
+            margin-bottom: 0.5rem;
+        }
+        
+        .job {
+            margin-bottom: 2rem;
+        }
+        
+        .job:last-child {
+            margin-bottom: 0;
+        }
+        
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        .job-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+        
+        .company {
+            font-weight: 500;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+        
+        .job-period {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        .job-description {
+            margin-top: 0.75rem;
+        }
+        
+        .job-description ul {
+            list-style: none;
+            padding-left: 1.5rem;
+        }
+        
+        .job-description li {
+            position: relative;
+            margin-bottom: 0.5rem;
+            padding-left: 1.25rem;
+        }
+        
+        .job-description li:before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        .education-item {
+            margin-bottom: 1.5rem;
+        }
+        
+        .education-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .degree {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .school {
+            color: var(--text);
+            margin-bottom: 0.25rem;
+        }
+        
+        .education-period {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .resume-content {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+            }
+            
+            .resume-header {
+                padding: 2rem 1.5rem;
+            }
+            
+            .sidebar, .main-content {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+
 </head>
 <body>
     <!-- Header -->
@@ -17,8 +250,7 @@
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
-                    <li><a href="resume.html" class="active">Resume</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="skills.html">Skills</a></li>
                 </ul>
                 <div class="hamburger">
                     <span></span>
@@ -29,226 +261,174 @@
         </div>
     </header>
 
-    <main class="resume-section">
-        <div class="container">
-            <div class="resume-header">
-                <h1>Brian Miller</h1>
-                <div class="contact-info">
-                    <a href="#"><i class="fas fa-map-marker-alt"></i> Virginia</a>
-                    <a href="mailto:bjosephmiller@gmail.com"><i class="fas fa-envelope"></i> bjosephmiller@gmail.com</a>
-                    <a href="https://linkedin.com/in/bjosephmiller" target="_blank"><i class="fab fa-linkedin"></i> in/bjosephmiller</a>
-                </div>
-            </div>
-
-            <section class="summary">
-                <h2 class="section-title">Summary</h2>
-                <p>Strategic and results-driven Product Operations leader with 10+ years of experience aligning Product, Engineering, and GTM teams to accelerate delivery in both startup and enterprise environments. Deep expertise in agile methodologies and end-to-end product lifecycle management. Passionate about using data-driven insights and innovative solutions to improve execution and drive meaningful business outcomes.</p>
-            </section>
-
-            <section class="experience">
-                <h2 class="section-title">Experience</h2>
+    <div class="resume">
+        <header class="resume-header">
+            <h1>BRIAN MILLER</h1>
+            <p>Product Operations Leader</p>
+        </header>
+        
+        <div class="resume-content">
+            <aside class="sidebar">
+                <section class="section contact-info">
+                    <h2 class="section-title"><i class="fas fa-user"></i>CONTACT</h2>
+                    <a href="mailto:brian@contextovercontrol.com" class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>brian@contextovercontrol.com</span>
+                    </a>
+                    <a href="tel:+15551234567" class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>(555) 123-4567</span>
+                    </a>
+                    <a href="#" class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Virginia, USA</span>
+                    </a>
+                    <a href="https://linkedin.com/in/bjosephmiller" target="_blank" class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <span>linkedin.com/in/bjosephmiller</span>
+                    </a>
+                </section>
                 
-                <div class="job fade-in">
-                    <div class="job-header">
-                        <div>
+                <section class="section">
+                    <h2 class="section-title"><i class="fas fa-star"></i>SKILLS</h2>
+                    <div class="skills-list">
+                        <span class="skill-tag">Product Strategy</span>
+                        <span class="skill-tag">Agile Coaching</span>
+                        <span class="skill-tag">GTM Strategy</span>
+                        <span class="skill-tag">Roadmapping</span>
+                        <span class="skill-tag">SAFe</span>
+                        <span class="skill-tag">Scrum</span>
+                        <span class="skill-tag">Kanban</span>
+                        <span class="skill-tag">Jira</span>
+                        <span class="skill-tag">Confluence</span>
+                        <span class="skill-tag">Airtable</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Data Analysis</span>
+                    </div>
+                </section>
+                
+                <section class="section">
+                    <h2 class="section-title"><i class="fas fa-graduation-cap"></i>EDUCATION</h2>
+                    <div class="education-item">
+                        <h3 class="degree">B.S. Computer Science</h3>
+                        <p class="school">Virginia Tech</p>
+                        <p class="education-period">2015 - 2019</p>
+                    </div>
+                </section>
+            </aside>
+            
+            <main class="main-content">
+                <section class="section">
+                    <h2 class="section-title"><i class="fas fa-user"></i>PROFILE</h2>
+                    <p>Strategic and results-driven Product Operations leader with 10+ years of experience aligning Product, Engineering, and GTM teams to accelerate delivery in both startup and enterprise environments. Deep expertise in agile methodologies and end-to-end product lifecycle management. Passionate about using data-driven insights and innovative solutions to improve execution and drive meaningful business outcomes.</p>
+                </section>
+
+                <section class="experience">
+                    <h2 class="section-title">Professional Experience</h2>
+                    
+                    <div class="job">
+                        <div class="job-header">
                             <h3 class="job-title">Product Operations Manager</h3>
-                            <p class="company">Redox</p>
+                            <span class="job-period">Dec 2022 - Present</span>
                         </div>
-                        <span class="duration">December 2022 - Present</span>
+                        <p class="company">Redox</p>
+                        <div class="job-description">
+                            <ul>
+                                <li>Led the annual product planning process, collaborating with product, engineering, and executive leadership to define strategic priorities, align roadmaps, and establish OKRs.</li>
+                                <li>Developed and implemented a standardized GTM framework, coordinating cross-functional teams to ensure launch readiness and successful launch for multiple key product releases each quarter.</li>
+                                <li>Designed and optimized the end-to-end product development lifecycle to improve efficiency, predictability, and cross-functional collaboration.</li>
+                                <li>Built and managed a centralized voice of the customer program, synthesizing feedback from commercial teams into actionable insights that directly informed roadmap prioritization and product improvements.</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="job-description">
-                        <ul>
-                            <li>Led the annual product planning process, collaborating with product, engineering, and executive leadership to define strategic priorities, align roadmaps, and establish OKRs.</li>
-                            <li>Developed and implemented a standardized GTM framework, coordinating cross-functional teams to ensure launch readiness and successful launch for multiple key product releases each quarter.</li>
-                            <li>Designed and optimized the end-to-end product development lifecycle to improve efficiency, predictability, and cross-functional collaboration.</li>
-                            <li>Built and managed a centralized voice of the customer program, synthesizing feedback from commercial teams into actionable insights that directly informed roadmap prioritization and product improvements.</li>
-                        </ul>
-                    </div>
-                </div>
 
-                <div class="job fade-in">
-                    <div class="job-header">
-                        <div>
+                    <div class="job">
+                        <div class="job-header">
                             <h3 class="job-title">Agile Coach</h3>
-                            <p class="company">Redox</p>
+                            <span class="job-period">Apr 2020 - Dec 2022</span>
                         </div>
-                        <span class="duration">April 2020 - December 2022</span>
+                        <p class="company">Redox</p>
+                        <div class="job-description">
+                            <ul>
+                                <li>Coached and mentored 3 engineering teams on agile principles, facilitating core events to improve delivery, resulting in enhanced planning accuracy, predictable delivery cadence, and stronger continuous improvement cycles.</li>
+                                <li>Developed and implemented a framework for tracking key developer productivity and flow metrics, providing actionable insights for teams and leadership.</li>
+                                <li>Facilitated blameless post-mortems for customer-impact incidents, driving root cause analysis and process improvements.</li>
+                                <li>Fostered engineering-wide alignment and growth by leading learning & development programs and facilitating engaging all-hands meetings.</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="job-description">
-                        <ul>
-                            <li>Coached and mentored 3 engineering teams on agile principles, facilitating core events to improve delivery, resulting in enhanced planning accuracy, predictable delivery cadence, and stronger continuous improvement cycles.</li>
-                            <li>Developed and implemented a framework for tracking key developer productivity and flow metrics, providing actionable insights for teams and leadership; facilitated blameless post-mortems for customer-impact incidents, driving root cause analysis and process improvements.</li>
-                            <li>Fostered engineering-wide alignment and growth by leading learning & development programs and facilitating engaging all-hands meetings, contributing to a more collaborative and informed engineering culture.</li>
-                        </ul>
-                    </div>
-                </div>
 
-                <div class="job fade-in">
-                    <div class="job-header">
-                        <div>
+                    <div class="job">
+                        <div class="job-header">
                             <h3 class="job-title">Scrum Master</h3>
-                            <p class="company">Sentara Healthcare</p>
+                            <span class="job-period">Aug 2019 - Apr 2020</span>
                         </div>
-                        <span class="duration">August 2019 - April 2020</span>
-                    </div>
-                    <div class="job-description">
-                        <ul>
-                            <li>Coached two engineering teams on agile & SAFe practices, promoting self-organization and continuous improvement while developing critical patient experience features for a new mobile application.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="job fade-in">
-                    <div class="job-header">
-                        <div>
-                            <h3 class="job-title">Associate Software Engineer</h3>
-                            <p class="company">JPMorgan Chase & Co.</p>
+                        <p class="company">Sentara Healthcare</p>
+                        <div class="job-description">
+                            <ul>
+                                <li>Coached two engineering teams on agile & SAFe practices, promoting self-organization and continuous improvement while developing critical patient experience features for a new mobile application.</li>
+                                <li>Facilitated all Scrum ceremonies, removing impediments and fostering a culture of transparency and collaboration.</li>
+                                <li>Worked with product owners to refine and prioritize backlogs, ensuring clear definition of done and acceptance criteria.</li>
+                            </ul>
                         </div>
-                        <span class="duration">March 2016 - August 2019</span>
                     </div>
-                    <div class="job-description">
-                        <ul>
-                            <li>Developed and debugged code for specific skills and functionalities within the Amelia conversational AI platform, supporting the team's efforts in building an advanced cognitive agent to automate support tasks.</li>
-                        </ul>
-                    </div>
-                </div>
 
-                <div class="job fade-in">
-                    <div class="job-header">
-                        <div>
+                    <div class="job">
+                        <div class="job-header">
                             <h3 class="job-title">System Administrator</h3>
-                            <p class="company">Egon Zehnder</p>
+                            <span class="job-period">2017 - 2019</span>
                         </div>
-                        <span class="duration">December 2013 - March 2016</span>
-                    </div>
-                    <div class="job-description">
-                        <ul>
-                            <li>Responsible for overseeing all IT services for the New York and Washington DC offices.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="job fade-in">
-                    <div class="job-header">
-                        <div>
-                            <h3 class="job-title">Technical Operations</h3>
-                            <p class="company">JP Morgan Chase</p>
-                        </div>
-                        <span class="duration">October 2010 - December 2013</span>
-                    </div>
-                    <div class="job-description">
-                        <ul>
-                            <li>Provided technical operations and software support for the Fixed Income trading desk within Asset Management.</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <section class="education">
-                <h2 class="section-title">Education</h2>
-                <div class="degree">
-                    <div class="degree-header">
-                        <div>
-                            <h3 class="degree-title">Bachelor of Arts (BA)</h3>
-                            <p class="school">Alliance University</p>
-                        </div>
-                        <span class="duration">Graduated 2009</span>
-                    </div>
-                    <p>Minor in English • NYACK, NY</p>
-                </div>
-            </section>
-
-            <section class="certifications">
-                <h2 class="section-title">Certifications</h2>
-                <div class="certification fade-in">
-                    <h4>Professional Scrum Master</h4>
-                    <p class="issuer">Scrum.org</p>
-                    <p class="date">2019</p>
-                </div>
-                <div class="certification fade-in">
-                    <h4>Certified LeSS Practitioner</h4>
-                    <p class="issuer">LeSS</p>
-                    <p class="date">2021</p>
-                </div>
-                <div class="certification fade-in">
-                    <h4>Team Kanban Practitioner</h4>
-                    <p class="issuer">Kanban University</p>
-                    <p class="date">2021</p>
-                </div>
-            </section>
-
-            <section class="skills">
-                <h2 class="section-title">Skills</h2>
-                <div class="skills-container">
-                    <div class="skill-category fade-in">
-                        <h4>Product Management</h4>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Product Strategy</span>
-                            <span class="skill-tag">Roadmap Development</span>
-                            <span class="skill-tag">GTM Strategy</span>
-                            <span class="skill-tag">Stakeholder Management</span>
-                            <span class="skill-tag">Executive Communication</span>
-                            <span class="skill-tag">OKRs & KPIs</span>
-                            <span class="skill-tag">PDLC & SDLC</span>
+                        <p class="company">Egon Zehnder</p>
+                        <div class="job-description">
+                            <ul>
+                                <li>Managed IT infrastructure and provided technical support for a global executive search firm.</li>
+                                <li>Led the migration of on-premises systems to cloud-based solutions, improving accessibility and reducing costs.</li>
+                                <li>Implemented security best practices and conducted regular system audits to ensure compliance with industry standards.</li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="skill-category fade-in">
-                        <h4>Methodologies</h4>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Agile</span>
-                            <span class="skill-tag">Scrum</span>
-                            <span class="skill-tag">Kanban</span>
-                            <span class="skill-tag">SAFe</span>
-                            <span class="skill-tag">LeSS</span>
+                </section>
+                
+                <section class="section">
+                    <h2 class="section-title"><i class="fas fa-tools"></i>SKILLS & EXPERTISE</h2>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                        </div>
+                        <div class="skill-category">
+                            <h4>Tools</h4>
+                            <div class="skills-list">
+                                <span class="skill-tag">Jira</span>
+                                <span class="skill-tag">Confluence</span>
+                                <span class="skill-tag">Airtable</span>
+                                <span class="skill-tag">Looker</span>
+                                <span class="skill-tag">SQL</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Technologies</h4>
+                            <div class="skills-list">
+                                <span class="skill-tag">HTML/CSS</span>
+                                <span class="skill-tag">JavaScript</span>
+                                <span class="skill-tag">React</span>
+                                <span class="skill-tag">Node.js</span>
+                                <span class="skill-tag">Git</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="skill-category fade-in">
-                        <h4>Tools</h4>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Jira</span>
-                            <span class="skill-tag">Confluence</span>
-                            <span class="skill-tag">Figma</span>
-                            <span class="skill-tag">Productboard</span>
-                            <span class="skill-tag">Miro</span>
-                            <span class="skill-tag">Pendo</span>
-                            <span class="skill-tag">Slack</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                </section>
+            </main>
         </div>
-    </main>
+    </div>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
+                    <h3>Brian Miller</h3>
                     <a href="index.html" class="footer-logo">ContextOverControl.com</a>
                     <p>Building digital experiences that make a difference.</p>
                 </div>
                 <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="resume.html">Resume</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-contact">
-                    <h4>Get In Touch</h4>
-                    <p><i class="fas fa-envelope"></i> brian@example.com</p>
-                    <p><i class="fas fa-phone"></i> (123) 456-7890</p>
-                    <div class="social-links">
-                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; <span id="current-year"></span> Brian Miller. All rights reserved.</p>
             </div>
         </div>
     </footer>

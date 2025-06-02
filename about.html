@@ -3,10 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me - Brian Miller</title>
+    <title>About - Context Over Control</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .philosophy-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+        .philosophy-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--text-color);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .philosophy-title span {
+            color: var(--primary-color);
+        }
+        .philosophy-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            line-height: 1.8;
+            color: var(--text-color);
+        }
+        .philosophy-content h2 {
+            color: var(--primary-color);
+            margin: 2rem 0 1rem;
+            font-size: 1.5rem;
+        }
+        .philosophy-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        @media (max-width: 768px) {
+            .philosophy-section {
+                padding: 4rem 1rem;
+            }
+            .philosophy-content {
+                padding: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -17,8 +63,7 @@
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html" class="active">About</a></li>
-                    <li><a href="resume.html">Resume</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="skills.html">Skills</a></li>
                 </ul>
                 <div class="hamburger">
                     <span></span>
@@ -29,59 +74,15 @@
         </div>
     </header>
 
-    <!-- About Section -->
-    <section id="about" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">About <span>Me</span></h2>
-                <p class="section-subtitle">Get to know me better</p>
-            </div>
-            <div class="about-content">
-                <div class="about-image">
-                    <div class="avatar-container">
-                        <img src="images/Screenshot 2025-06-01 at 8.47.59 PM.png" alt="Brian Miller" class="avatar">
-                    </div>
-                </div>
-                <div class="about-text">
-                    <h3>Hello, I'm Brian Miller</h3>
-                    <p>I'm a passionate web developer with expertise in creating beautiful and functional websites. With a strong foundation in front-end technologies, I bring ideas to life through clean, efficient code and thoughtful user experiences.</p>
-                    
-                    <div class="about-details">
-                        <div class="detail-item">
-                            <span class="detail-label">Name:</span>
-                            <span class="detail-value">Brian Miller</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Email:</span>
-                            <span class="detail-value">brian@example.com</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Location:</span>
-                            <span class="detail-value">San Francisco, CA</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Availability:</span>
-                            <span class="detail-value">Open to opportunities</span>
-                        </div>
-                    </div>
-                    
-                    <div class="skills">
-                        <h4>My Skills</h4>
-                        <div class="skill-tags">
-                            <span class="skill-tag">HTML5</span>
-                            <span class="skill-tag">CSS3</span>
-                            <span class="skill-tag">JavaScript</span>
-                            <span class="skill-tag">React</span>
-                            <span class="skill-tag">Node.js</span>
-                            <span class="skill-tag">UI/UX Design</span>
-                            <span class="skill-tag">Responsive Design</span>
-                            <span class="skill-tag">Git</span>
-                        </div>
-                    </div>
-                    
-                    <a href="resume.html" class="btn btn-primary">View My Resume</a>
-                </div>
-            </div>
+    <!-- Philosophy Section -->
+    <section class="philosophy-section">
+        <h1 class="philosophy-title">Why <span>Context Over Control</span></h1>
+        <div class="philosophy-content">
+            <p>I named my site <strong>Context Over Control</strong> because it reflects a core belief that the best outcomes—whether in building products, leading teams, or serving customers—come not from top-down directives, but from shared understanding. As a product leader, I focus on empowering teams with clarity around the "why" so they can make smart, autonomous decisions about the "how."</p>
+            
+            <p>This value shows up in how I operate: prioritizing transparency over micromanagement, aligning teams around customer problems, and fostering environments where curiosity and ownership thrive. When teams have deep context—about the customer, the strategy, and the constraints—they don't need to be controlled. They build better products, faster.</p>
+            
+            <p>My obsession with customers fuels this mindset. Real insight doesn't come from sitting in a room writing requirements—it comes from listening, observing, and deeply understanding the people we serve. Context turns into impact when it's in the hands of empowered teams.</p>
         </div>
     </section>
 
@@ -89,19 +90,21 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-brand">
-                    <a href="index.html" class="footer-logo">ContextOverControl.com</a>
-                    <p>Building digital experiences that make a difference.</p>
+                <div class="footer-contact">
+                    <h4>Get In Touch</h4>
+                    <p><i class="fas fa-envelope"></i> brian@contextovercontrol.com</p>
+                    <div class="social-links">
+                        <a href="https://github.com/brian-miller-r" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/bjosephmiller/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="mailto:brian@contextovercontrol.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
                 </div>
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="resume.html">Resume</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> Brian Miller. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
                 <div class="footer-contact">
                     <h4>Get In Touch</h4>
                     <p><i class="fas fa-envelope"></i> brian@example.com</p>
