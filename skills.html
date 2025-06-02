@@ -5,50 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skills & Expertise - Brian Miller</title>
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        :root {
-            --primary: #0d9488;
-            --primary-light: #f0fdfa;
-            --primary-dark: #0f766e;
-            --text: #1f2937;
-            --text-light: #6b7280;
-            --border: #e5e7eb;
-            --background: #f9fafb;
-            --white: #ffffff;
-            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: var(--text);
-            background-color: var(--background);
-            -webkit-font-smoothing: antialiased;
-            padding-top: 80px;
-        }
-        
-        .container {
+        .skills-section {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 1.5rem;
+            padding: 6rem 2rem;
         }
         
-        .page-header {
+        .skills-title {
             text-align: center;
+            font-size: 2.5rem;
             margin-bottom: 3rem;
+            color: var(--text-color);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
         }
         
-        .page-header h1 {
-            font-size: 2.5rem;
-            color: var(--primary-dark);
+        .skills-content {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            line-height: 1.8;
+            color: var(--text-color);
             margin-bottom: 1rem;
         }
         
@@ -216,11 +203,11 @@
         </div>
     </header>
 
-    <main class="container">
-        <div class="page-header">
-            <h1>Skills & Expertise</h1>
+    <!-- Skills Section -->
+    <section class="skills-section">
+        <h1 class="skills-title">Skills & Expertise</h1>
+        <div class="skills-content">
             <p>Strategic product leader with a proven track record of driving successful product initiatives and leading high-performing teams.</p>
-        </div>
 
         <div class="skills-grid">
             <div class="skill-category">
@@ -312,30 +299,7 @@
                 </div>
             </div>
         </div>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <h3>Brian Miller</h3>
-                    <p>Building digital experiences that make a difference.</p>
-                </div>
-                <div class="footer-contact">
-                    <h4>Get In Touch</h4>
-                    <p><i class="fas fa-envelope"></i> brian@contextovercontrol.com</p>
-                    <div class="social-links">
-                        <a href="https://github.com/brian-miller-r" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/bjosephmiller/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                        <a href="mailto:brian@contextovercontrol.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; <span id="current-year"></span> Brian Miller. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    </section>
 
     <script>
         // Update current year in footer
