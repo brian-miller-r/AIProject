@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Typing effect for the home page
     const typedTextSpan = document.getElementById('typing');
     if (typedTextSpan) {
-        const textArray = ["product leader", "GTM strategist", "data-driven operator", "customer obsessed", "Chief of Staff"];
+        const textArray = ["a product leader", "a GTM strategist", "a data-driven operator", "customer obsessed", "a chief of staff"];
         let textArrayIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
