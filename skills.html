@@ -124,25 +124,66 @@
         
         .experience-header {
             display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.75rem;
+            align-items: center;
+            margin-bottom: 1rem;
+            gap: 1.25rem;
         }
         
+        .company-logo {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            object-fit: contain;
+            background: white;
+            padding: 4px;
+            border: 1px solid #f0f0f0;
+            flex-shrink: 0;
+        }
+
+        .experience-header-content {
+            flex: 1;
+        }
+
         .experience-title {
             font-size: 1.25rem;
             font-weight: 600;
             color: var(--text);
+            margin: 0;
+            line-height: 1.3;
         }
         
         .experience-company {
             color: var(--primary);
             font-weight: 500;
-            margin-bottom: 0.5rem;
+            margin: 0.25rem 0 0;
+            font-size: 1rem;
+            line-height: 1.4;
         }
         
         .experience-period {
             color: var(--text-light);
             font-size: 0.9rem;
+            white-space: nowrap;
+            margin-left: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .experience-header {
+                flex-wrap: wrap;
+                gap: 0.75rem;
+            }
+            
+            .experience-period {
+                width: 100%;
+                margin: 0.5rem 0 0 0;
+                padding-top: 0.5rem;
+                border-top: 1px solid #f0f0f0;
+            }
+            
+            .company-logo {
+                width: 40px;
+                height: 40px;
+            }
         }
         
         .experience-description {
@@ -267,7 +308,8 @@
             
             <div class="experience-item">
                 <div class="experience-header">
-                    <div>
+                    <img src="images/Redox.jpeg" alt="Redox" class="company-logo">
+                    <div class="experience-header-content">
                         <h3 class="experience-title">Product Operations Manager</h3>
                         <p class="experience-company">Redox</p>
                     </div>
@@ -284,7 +326,8 @@
 
             <div class="experience-item">
                 <div class="experience-header">
-                    <div>
+                    <img src="images/Redox.jpeg" alt="Redox" class="company-logo">
+                    <div class="experience-header-content">
                         <h3 class="experience-title">Agile Coach</h3>
                         <p class="experience-company">Redox</p>
                     </div>
@@ -295,6 +338,70 @@
                         <li>Coached and mentored 3 engineering teams on agile principles, facilitating core events to improve delivery, resulting in enhanced planning accuracy, predictable delivery cadence, and stronger continuous improvement cycles.</li>
                         <li>Developed and implemented a framework for tracking key developer productivity and flow metrics, providing actionable insights for teams and leadership.</li>
                         <li>Facilitated blameless post-mortems for customer-impact incidents, driving root cause analysis and process improvements.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <img src="images/Sentara-Health-1.jpg" alt="Sentara Healthcare" class="company-logo">
+                    <div class="experience-header-content">
+                        <h3 class="experience-title">Scrum Master</h3>
+                        <p class="experience-company">Sentara Healthcare</p>
+                    </div>
+                    <span class="experience-period">Aug 2019 - Apr 2020</span>
+                </div>
+                <div class="experience-description">
+                    <ul>
+                        <li>Coached two engineering teams on agile & SAFe practices, promoting self-organization and continuous improvement while developing critical patient experience features for a new mobile application.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <img src="images/JP-Morgan-Chase-Logo.png" alt="JPMorgan Chase" class="company-logo">
+                    <div class="experience-header-content">
+                        <h3 class="experience-title">Associate Software Engineer</h3>
+                        <p class="experience-company">JPMorgan Chase & Co.</p>
+                    </div>
+                    <span class="experience-period">Mar 2016 - Aug 2019</span>
+                </div>
+                <div class="experience-description">
+                    <ul>
+                        <li>Developed and debugged code for specific skills and functionalities within the Amelia conversational AI platform, supporting the team's efforts in building an advanced cognitive agent to automate support tasks.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <img src="images/Egon.png" alt="Egon Zehnder" class="company-logo">
+                    <div class="experience-header-content">
+                        <h3 class="experience-title">System Administrator</h3>
+                        <p class="experience-company">Egon Zehnder</p>
+                    </div>
+                    <span class="experience-period">Dec 2013 - Mar 2016</span>
+                </div>
+                <div class="experience-description">
+                    <ul>
+                        <li>Responsible for overseeing all IT services for the New York and Washington DC offices.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <img src="images/JP-Morgan-Chase-Logo.png" alt="JP Morgan Chase" class="company-logo">
+                    <div class="experience-header-content">
+                        <h3 class="experience-title">Technical Operations</h3>
+                        <p class="experience-company">JP Morgan Chase</p>
+                    </div>
+                    <span class="experience-period">Oct 2010 - Dec 2013</span>
+                </div>
+                <div class="experience-description">
+                    <ul>
+                        <li>Technical operations role supporting various IT infrastructure and systems.</li>
                     </ul>
                 </div>
             </div>
