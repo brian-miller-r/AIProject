@@ -9,18 +9,55 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Mobile menu toggle
-    const hamburger = document.querySelector('.hamburger');
-    if (hamburger) {
-        hamburger.addEventListener('click', function() {
-            document.body.classList.toggle('nav-open');
-        });
-    }
+    document.addEventListener('DOMContentLoaded', function() {
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const navOverlay = document.querySelector('.nav-overlay');
+        const body = document.body;
 
-    // Close mobile menu when clicking on a nav link
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            document.body.classList.remove('nav-open');
-        });
+        if (hamburger && navLinks) {
+            // Toggle mobile menu
+            hamburger.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                this.setAttribute('aria-expanded', !isExpanded);
+                navLinks.classList.toggle('active');
+                navOverlay.classList.toggle('active');
+                body.style.overflow = isExpanded ? '' : 'hidden';
+                this.classList.toggle('active');
+            });
+
+            // Close menu when clicking on overlay
+            navOverlay.addEventListener('click', function() {
+                hamburger.setAttribute('aria-expanded', 'false');
+                navLinks.classList.remove('active');
+                this.classList.remove('active');
+                body.style.overflow = '';
+                hamburger.classList.remove('active');
+            });
+
+            // Close menu when clicking on nav links
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.setAttribute('aria-expanded', 'false');
+                    navLinks.classList.remove('active');
+                    navOverlay.classList.remove('active');
+                    body.style.overflow = '';
+                    hamburger.classList.remove('active');
+                });
+            });
+
+            // Close menu when pressing Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && hamburger.getAttribute('aria-expanded') === 'true') {
+                    hamburger.setAttribute('aria-expanded', 'false');
+                    navLinks.classList.remove('active');
+                    navOverlay.classList.remove('active');
+                    body.style.overflow = '';
+                    hamburger.classList.remove('active');
+                }
+            });
+        }
     });
 
     // Back to top button
