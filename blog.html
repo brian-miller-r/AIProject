@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Brian Miller</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .blog-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .blog-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-color);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        .blog-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+        }
+
+        .blog-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .blog-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem 2.5rem;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .blog-card-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .blog-card-date {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .blog-card-tag {
+            font-size: 0.75rem;
+            background: var(--primary-light);
+            color: var(--primary-color);
+            padding: 0.2rem 0.65rem;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        .blog-card h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+        }
+
+        .blog-card p {
+            font-size: 1rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 1.25rem;
+        }
+
+        .blog-read-more {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .blog-read-more i {
+            margin-left: 0.35rem;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .blog-section {
+                padding: 4rem 1rem;
+            }
+            .blog-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="logo">ContextOverControl.com</a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="skills.html">Skills</a></li>
+                    <li><a href="blog.html" class="active">Blog</a></li>
+                    <li><a href="launch-hub/" target="_blank" rel="noopener noreferrer">Launch Hub</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <button class="hamburger" aria-label="Menu" aria-expanded="false">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+        <div class="nav-overlay"></div>
+    </header>
+
+    <!-- Blog Section -->
+    <section class="blog-section">
+        <h1 class="blog-title">Blog</h1>
+        <p class="blog-subtitle">Thoughts on product, leadership, and the books that shape how I think.</p>
+
+        <div class="blog-list">
+
+            <a href="blog/project-hail-mary.html" class="blog-card">
+                <div class="blog-card-meta">
+                    <span class="blog-card-date">January 2026</span>
+                    <span class="blog-card-tag">Books &amp; PM</span>
+                </div>
+                <h2>Deadline-Induced Quality Issues: A Problem All Over the Galaxy</h2>
+                <p>Just wrapped up Project Hail Mary by Andy Weir — and found a surprisingly sharp product management lesson buried in a space survival story about collaboration, trust, and the hypothesis-experiment-learn loop.</p>
+                <span class="blog-read-more">Read more <i class="fas fa-arrow-right"></i></span>
+            </a>
+
+            <a href="blog/sabbatical.html" class="blog-card">
+                <div class="blog-card-meta">
+                    <span class="blog-card-date">September 2025</span>
+                    <span class="blog-card-tag">Learning &amp; AI</span>
+                </div>
+                <h2>Returning Energized from a Summer Sabbatical</h2>
+                <p>Books on AI, generalism, and VC — plus a night at Radio City with Jamie Dimon. What I read, watched, and took away from a summer of stepping back to move forward.</p>
+                <span class="blog-read-more">Read more <i class="fas fa-arrow-right"></i></span>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-contact">
+                    <h4>Brian Miller</h4>
+                    <p style="font-size:0.9rem;opacity:0.8;margin-bottom:0.75rem;">Product Operations Leader &middot; Building the systems behind great product teams.</p>
+                    <p><i class="fas fa-envelope"></i> brian@contextovercontrol.com</p>
+                    <div class="social-links">
+                        <a href="https://github.com/brian-miller-r" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/bjosephmiller/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="mailto:brian@contextovercontrol.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> Brian Miller. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
