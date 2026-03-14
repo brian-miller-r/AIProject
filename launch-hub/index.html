@@ -1,0 +1,2759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Ops — Launch Hub</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+<style>
+/* ============================================
+   CONFLUENCE-LIKE DESIGN SYSTEM
+   Based on Atlassian Design System colors
+   ============================================ */
+
+/* Reset & Base */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --blue-900: #091E42;
+  --blue-800: #0747A6;
+  --blue-700: #0052CC;
+  --blue-600: #0065FF;
+  --blue-500: #2684FF;
+  --blue-100: #DEEBFF;
+  --blue-50: #F0F6FF;
+  --green-700: #006644;
+  --green-500: #00875A;
+  --green-100: #E3FCEF;
+  --yellow-700: #FF8B00;
+  --yellow-500: #FF991F;
+  --yellow-100: #FFFAE6;
+  --red-700: #BF2600;
+  --red-500: #DE350B;
+  --red-100: #FFEBE6;
+  --purple-500: #6554C0;
+  --purple-100: #EAE6FF;
+  --teal-500: #00B8D9;
+  --teal-100: #E6FCFF;
+  --neutral-900: #091E42;
+  --neutral-800: #172B4D;
+  --neutral-700: #253858;
+  --neutral-500: #42526E;
+  --neutral-400: #505F79;
+  --neutral-300: #5E6C84;
+  --neutral-200: #6B778C;
+  --neutral-100: #7A869A;
+  --neutral-80: #97A0AF;
+  --neutral-60: #B3BAC5;
+  --neutral-40: #DFE1E6;
+  --neutral-30: #EBECF0;
+  --neutral-20: #F4F5F7;
+  --neutral-10: #FAFBFC;
+  --white: #FFFFFF;
+  --header-height: 48px;
+  --sidebar-width: 280px;
+}
+
+html { font-size: 14px; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  color: var(--neutral-800);
+  background: var(--neutral-20);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================
+   LAYOUT
+   ============================================ */
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.layout {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+.header {
+  height: var(--header-height);
+  background: var(--blue-800);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  flex-shrink: 0;
+  z-index: 100;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.header-nav {
+  display: flex;
+  gap: 4px;
+}
+
+.header-nav-item {
+  color: rgba(255, 255, 255, 0.7);
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.header-nav-item:hover { background: rgba(255, 255, 255, 0.15); color: #fff; }
+.header-nav-item.active { color: #fff; background: rgba(255, 255, 255, 0.2); }
+
+.header-center { flex: 1; display: flex; justify-content: center; max-width: 500px; margin: 0 auto; }
+
+.header-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  padding: 5px 12px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 13px;
+  width: 100%;
+  cursor: text;
+  transition: background 0.15s;
+}
+
+.header-search:hover { background: rgba(255, 255, 255, 0.25); }
+
+.header-right { display: flex; align-items: center; gap: 8px; }
+
+.header-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--teal-500);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* ============================================
+   SIDEBAR
+   ============================================ */
+.sidebar {
+  width: var(--sidebar-width);
+  background: var(--neutral-10);
+  border-right: 1px solid var(--neutral-40);
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+
+.sidebar-space-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 16px 12px;
+  border-bottom: 1px solid var(--neutral-40);
+}
+
+.sidebar-space-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  background: var(--blue-100);
+  border-radius: 4px;
+}
+
+.sidebar-space-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--neutral-800);
+}
+
+.sidebar-space-key {
+  font-size: 11px;
+  color: var(--neutral-200);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.sidebar-nav { padding: 8px 0; }
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 12px;
+  font-size: 13px;
+  color: var(--neutral-500);
+  cursor: default;
+  border-radius: 0;
+  transition: background 0.1s;
+  min-height: 30px;
+  user-select: none;
+}
+
+.sidebar-item.clickable { cursor: pointer; }
+.sidebar-item.clickable:hover { background: var(--neutral-30); }
+.sidebar-item.active {
+  background: var(--blue-100);
+  color: var(--blue-700);
+  font-weight: 500;
+}
+
+.sidebar-chevron {
+  width: 16px;
+  height: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: var(--neutral-200);
+  transition: transform 0.15s;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.sidebar-chevron.expanded { transform: rotate(90deg); }
+
+.sidebar-chevron-spacer { width: 16px; flex-shrink: 0; }
+
+.sidebar-icon { font-size: 14px; flex-shrink: 0; }
+
+.sidebar-label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ============================================
+   CONTENT AREA
+   ============================================ */
+.content {
+  flex: 1;
+  overflow-y: auto;
+  background: var(--white);
+}
+
+.content-header {
+  padding: 12px 40px 0;
+  border-bottom: 1px solid var(--neutral-30);
+  background: var(--white);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  padding-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.breadcrumb-item {
+  color: var(--blue-700);
+  cursor: pointer;
+}
+
+.breadcrumb-item:hover { text-decoration: underline; }
+.breadcrumb-sep { color: var(--neutral-200); }
+.breadcrumb-current { color: var(--neutral-500); }
+
+.page-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px 40px 60px;
+}
+
+/* ============================================
+   PAGE CONTENT TYPOGRAPHY
+   ============================================ */
+.page-title {
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--neutral-800);
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.page-content h1 {
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--neutral-800);
+  margin: 32px 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--neutral-30);
+}
+
+.page-content h2 {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--neutral-800);
+  margin: 28px 0 10px;
+}
+
+.page-content h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--neutral-700);
+  margin: 20px 0 8px;
+}
+
+.page-content p {
+  margin: 10px 0;
+  color: var(--neutral-800);
+  line-height: 1.7;
+}
+
+.page-content ul, .page-content ol {
+  margin: 8px 0;
+  padding-left: 24px;
+}
+
+.page-content li {
+  margin: 4px 0;
+  line-height: 1.6;
+}
+
+.page-content strong { font-weight: 600; }
+
+.page-content a, .mention {
+  color: var(--blue-700);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.page-content a:hover, .mention:hover { text-decoration: underline; }
+
+.page-content hr {
+  border: none;
+  border-top: 1px solid var(--neutral-30);
+  margin: 24px 0;
+}
+
+/* ============================================
+   CONFLUENCE COMPONENTS
+   ============================================ */
+
+/* Info Panels */
+.panel {
+  border-radius: 3px;
+  padding: 16px 20px;
+  margin: 16px 0;
+  border-left: 3px solid;
+}
+
+.panel-info { background: var(--blue-50); border-color: var(--blue-500); }
+.panel-success { background: var(--green-100); border-color: var(--green-500); }
+.panel-warning { background: var(--yellow-100); border-color: var(--yellow-500); }
+.panel-error { background: var(--red-100); border-color: var(--red-500); }
+.panel-note { background: var(--purple-100); border-color: var(--purple-500); }
+
+.panel-title {
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin-bottom: 6px;
+}
+
+.panel-info .panel-title { color: var(--blue-800); }
+.panel-success .panel-title { color: var(--green-700); }
+.panel-warning .panel-title { color: var(--yellow-700); }
+.panel-error .panel-title { color: var(--red-700); }
+.panel-note .panel-title { color: var(--purple-500); }
+
+/* Status Lozenges */
+.lozenge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.lozenge-success { background: var(--green-100); color: var(--green-700); }
+.lozenge-moved { background: var(--yellow-100); color: var(--yellow-700); }
+.lozenge-info { background: var(--blue-100); color: var(--blue-800); }
+.lozenge-default { background: var(--neutral-30); color: var(--neutral-500); }
+.lozenge-error { background: var(--red-100); color: var(--red-700); }
+.lozenge-new { background: var(--purple-100); color: var(--purple-500); }
+
+.lozenge-bold-success { background: var(--green-500); color: #fff; }
+.lozenge-bold-info { background: var(--blue-700); color: #fff; }
+.lozenge-bold-warning { background: var(--yellow-500); color: var(--neutral-900); }
+.lozenge-bold-error { background: var(--red-500); color: #fff; }
+
+/* Tables */
+.confluence-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 13px;
+}
+
+.confluence-table th {
+  background: var(--neutral-20);
+  font-weight: 600;
+  text-align: left;
+  padding: 8px 12px;
+  border: 1px solid var(--neutral-40);
+  color: var(--neutral-700);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.confluence-table td {
+  padding: 8px 12px;
+  border: 1px solid var(--neutral-40);
+  vertical-align: top;
+}
+
+.confluence-table tr:hover td { background: var(--neutral-10); }
+
+/* Labels */
+.label {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 500;
+  background: var(--neutral-30);
+  color: var(--neutral-500);
+  margin: 2px 4px 2px 0;
+}
+
+.page-labels {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+/* Page Metadata */
+.page-metadata {
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--neutral-30);
+  font-size: 12px;
+  color: var(--neutral-300);
+}
+
+.page-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.meta-avatar {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--blue-500);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* Avatars */
+.avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.avatar-blue { background: var(--blue-500); }
+.avatar-teal { background: var(--teal-500); }
+.avatar-green { background: var(--green-500); }
+.avatar-purple { background: var(--purple-500); }
+.avatar-red { background: var(--red-500); }
+.avatar-yellow { background: var(--yellow-500); }
+
+/* Stage Tracker */
+.stage-tracker {
+  display: flex;
+  gap: 0;
+  margin: 20px 0;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.stage-item {
+  flex: 1;
+  padding: 12px 16px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  position: relative;
+  background: var(--neutral-30);
+  color: var(--neutral-300);
+  border-right: 2px solid var(--white);
+}
+
+.stage-item.completed {
+  background: var(--green-500);
+  color: #fff;
+}
+
+.stage-item.current {
+  background: var(--blue-700);
+  color: #fff;
+}
+
+.stage-item.upcoming {
+  background: var(--neutral-30);
+  color: var(--neutral-300);
+}
+
+.stage-item-label { display: block; font-size: 11px; font-weight: 400; margin-top: 2px; opacity: 0.8; }
+
+/* Dashboard Cards */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.dashboard-card {
+  border: 1px solid var(--neutral-40);
+  border-radius: 8px;
+  padding: 16px;
+  background: var(--white);
+}
+
+.dashboard-card-title {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--neutral-300);
+  margin-bottom: 12px;
+}
+
+.dashboard-card-full {
+  grid-column: 1 / -1;
+}
+
+/* Stat Cards */
+.stat-row {
+  display: flex;
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.stat-card {
+  flex: 1;
+  background: var(--neutral-10);
+  border: 1px solid var(--neutral-40);
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--blue-700);
+}
+
+.stat-label {
+  font-size: 12px;
+  color: var(--neutral-300);
+  margin-top: 4px;
+}
+
+/* Checklist */
+.checklist-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--neutral-30);
+}
+
+.checklist-check {
+  width: 18px;
+  height: 18px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.checklist-check.done {
+  background: var(--green-500);
+  color: #fff;
+}
+
+.checklist-check.pending {
+  background: var(--white);
+  border: 2px solid var(--neutral-40);
+}
+
+.checklist-check.blocked {
+  background: var(--yellow-100);
+  border: 2px solid var(--yellow-500);
+  color: var(--yellow-700);
+}
+
+.checklist-content { flex: 1; }
+
+.checklist-title {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.checklist-detail {
+  font-size: 12px;
+  color: var(--neutral-300);
+  margin-top: 2px;
+}
+
+/* Timeline */
+.timeline { margin: 16px 0; }
+
+.timeline-item {
+  display: flex;
+  gap: 16px;
+  padding: 12px 0;
+  position: relative;
+}
+
+.timeline-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 11px;
+  top: 36px;
+  bottom: 0;
+  width: 2px;
+  background: var(--neutral-40);
+}
+
+.timeline-dot {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.timeline-dot.done { background: var(--green-500); color: #fff; }
+.timeline-dot.current { background: var(--blue-700); color: #fff; }
+.timeline-dot.upcoming { background: var(--neutral-30); color: var(--neutral-300); }
+
+.timeline-content { flex: 1; }
+
+.timeline-date {
+  font-size: 11px;
+  color: var(--neutral-300);
+  font-weight: 500;
+}
+
+.timeline-title {
+  font-weight: 500;
+  color: var(--neutral-800);
+  margin-top: 2px;
+}
+
+.timeline-detail {
+  font-size: 12px;
+  color: var(--neutral-400);
+  margin-top: 2px;
+}
+
+/* Expand/Collapse */
+.expand-section {
+  border: 1px solid var(--neutral-40);
+  border-radius: 4px;
+  margin: 12px 0;
+}
+
+.expand-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: var(--neutral-10);
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 13px;
+  user-select: none;
+}
+
+.expand-header:hover { background: var(--neutral-20); }
+
+.expand-body {
+  padding: 14px;
+  border-top: 1px solid var(--neutral-40);
+}
+
+/* Activity Feed */
+.activity-item {
+  display: flex;
+  gap: 10px;
+  padding: 8px 0;
+  font-size: 13px;
+}
+
+.activity-item + .activity-item { border-top: 1px solid var(--neutral-30); }
+
+.activity-text { flex: 1; }
+.activity-time { color: var(--neutral-200); font-size: 12px; white-space: nowrap; }
+
+/* Wireframe Mockups */
+.mockup-container {
+  border: 1px solid var(--neutral-40);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 16px 0;
+}
+
+.mockup-toolbar {
+  background: var(--neutral-20);
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--neutral-40);
+}
+
+.mockup-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--neutral-60);
+}
+
+.mockup-dot:nth-child(1) { background: #ff5f57; }
+.mockup-dot:nth-child(2) { background: #ffbd2e; }
+.mockup-dot:nth-child(3) { background: #28ca42; }
+
+.mockup-body {
+  padding: 20px;
+  background: var(--neutral-10);
+  min-height: 200px;
+}
+
+.mockup-label {
+  text-align: center;
+  color: var(--neutral-300);
+  font-size: 12px;
+  font-style: italic;
+  padding: 8px;
+}
+
+/* Inline Link */
+.page-link {
+  color: var(--blue-700);
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.page-link:hover { text-decoration: underline; }
+
+/* Signoff Row */
+.signoff-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--neutral-30);
+}
+
+.signoff-name {
+  flex: 1;
+  font-weight: 500;
+}
+
+.signoff-role {
+  width: 120px;
+  font-size: 12px;
+  color: var(--neutral-300);
+}
+
+.signoff-date {
+  font-size: 12px;
+  color: var(--neutral-300);
+  width: 100px;
+}
+
+/* DCR Cards */
+.dcr-card {
+  border: 2px solid var(--yellow-500);
+  background: var(--yellow-100);
+  border-radius: 8px;
+  padding: 20px;
+  margin: 16px 0;
+}
+
+.dcr-card-title {
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--yellow-700);
+  margin-bottom: 12px;
+}
+
+.dcr-field {
+  display: flex;
+  gap: 8px;
+  margin: 6px 0;
+  font-size: 13px;
+}
+
+.dcr-field-label {
+  font-weight: 600;
+  color: var(--neutral-700);
+  width: 160px;
+  flex-shrink: 0;
+}
+
+/* Section Header */
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 28px 0 12px;
+}
+
+/* Scrollbar styling */
+.sidebar::-webkit-scrollbar,
+.content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-track,
+.content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb,
+.content::-webkit-scrollbar-thumb {
+  background: var(--neutral-60);
+  border-radius: 4px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover,
+.content::-webkit-scrollbar-thumb:hover {
+  background: var(--neutral-80);
+}
+
+/* Properties Panel (like Confluence Page Properties) */
+.properties-panel {
+  background: var(--neutral-10);
+  border: 1px solid var(--neutral-40);
+  border-radius: 4px;
+  padding: 0;
+  margin: 16px 0;
+  overflow: hidden;
+}
+
+.properties-row {
+  display: flex;
+  border-bottom: 1px solid var(--neutral-40);
+}
+
+.properties-row:last-child { border-bottom: none; }
+
+.properties-key {
+  width: 180px;
+  padding: 8px 14px;
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--neutral-500);
+  background: var(--neutral-20);
+  border-right: 1px solid var(--neutral-40);
+  flex-shrink: 0;
+}
+
+.properties-value {
+  flex: 1;
+  padding: 8px 14px;
+  font-size: 13px;
+}
+
+/* Action Items */
+.action-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 6px 0;
+}
+
+.action-checkbox {
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--blue-500);
+  border-radius: 3px;
+  margin-top: 2px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: #fff;
+}
+
+.action-checkbox.checked {
+  background: var(--blue-500);
+}
+
+/* Blockquote */
+.page-content blockquote {
+  border-left: 3px solid var(--neutral-60);
+  padding: 4px 16px;
+  margin: 12px 0;
+  color: var(--neutral-400);
+  font-style: italic;
+}
+
+/* Inline code */
+.page-content code {
+  background: var(--neutral-20);
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-family: 'SF Mono', SFMono-Regular, ui-monospace, 'DejaVu Sans Mono', Menlo, Consolas, monospace;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .sidebar { width: 240px; }
+  .page-container { padding: 24px 24px 60px; }
+}
+
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel" data-type="module">
+const { useState, Fragment } = React;
+
+function DateChangeRequest() {
+  return (
+    <div>
+      <h1 className="page-title">📝 Date Change Request — Feb 12, 2026</h1>
+      <div className="page-content">
+        <div className="panel panel-warning">
+          <div className="panel-title">Date Change Request Protocol</div>
+          This DCR was submitted and resolved per the Product Operating System date change protocol. All stakeholders were notified via standardized Slack alert and acknowledged within the 24-hour review window.
+        </div>
+
+        <div className="dcr-card">
+          <div className="dcr-card-title">⚠️ DCR-2026-017 — ELD Compliance 2.0</div>
+          <div className="dcr-field"><div className="dcr-field-label">Submitted By</div><div><span className="mention">@David Torres</span> (Eng Lead)</div></div>
+          <div className="dcr-field"><div className="dcr-field-label">Submitted Date</div><div>February 12, 2026</div></div>
+          <div className="dcr-field"><div className="dcr-field-label">Original Launch Date</div><div><strong style={{ textDecoration: 'line-through' }}>March 14, 2026</strong></div></div>
+          <div className="dcr-field"><div className="dcr-field-label">New Launch Date</div><div><strong style={{ color: 'var(--blue-700)' }}>March 28, 2026</strong> (+14 days)</div></div>
+          <div className="dcr-field"><div className="dcr-field-label">DCR Status</div><div><span className="lozenge lozenge-bold-success">APPROVED & RESOLVED</span></div></div>
+        </div>
+
+        <h1>Reason for Date Change</h1>
+        <p>
+          During Build stage, the push notification infrastructure upgrade (dependency for US-102 "proactive HOS alert") encountered an unexpected compatibility issue with the iOS 18 notification framework. The Mobile team identified that location-aware push triggers require a new background processing approach that was not scoped in the original estimate.
+        </p>
+        <p>
+          <span className="mention">@David Torres</span> estimated 2 additional weeks of engineering work to resolve. The fix is straightforward but requires full QA re-validation of the push notification flow on both iOS and Android.
+        </p>
+
+        <h1>Downstream Impact Assessment</h1>
+        <table className="confluence-table">
+          <thead>
+            <tr><th>Team</th><th>Impact</th><th>Mitigation</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>PMM</strong></td>
+              <td>Blog post and email campaign need new dates. No content rework needed.</td>
+              <td>Jamie Rivera updated all scheduled sends. 30 min of work.</td>
+            </tr>
+            <tr>
+              <td><strong>Sales</strong></td>
+              <td>Two prospects were expecting Mar 14 demo. Need updated timeline.</td>
+              <td>Marcus Kim contacted both accounts directly. Rescheduled demos to Mar 30.</td>
+            </tr>
+            <tr>
+              <td><strong>Support</strong></td>
+              <td>Help center articles were staged for Mar 13 publish. Need to hold.</td>
+              <td>Lisa Park updated publish date in CMS. No content changes.</td>
+            </tr>
+            <tr>
+              <td><strong>Training</strong></td>
+              <td>Driver training webinar was scheduled for Mar 21. Can keep as-is with new launch date.</td>
+              <td>No action needed — webinar now falls at T-7 instead of T+7.</td>
+            </tr>
+            <tr>
+              <td><strong>Global Ops</strong></td>
+              <td>Additional 2 weeks helps LATAM regulatory timeline. Net positive.</td>
+              <td>Ana Whitfield noted this improves chances of concurrent LATAM launch.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h1>Stakeholder Acknowledgments</h1>
+        <div className="panel panel-success">
+          <div className="panel-title">24-Hour Review Window — Result</div>
+          All 6 stakeholders acknowledged within <strong>18 hours</strong> of DCR submission. No objections raised. DCR approved.
+        </div>
+
+        <table className="confluence-table">
+          <thead>
+            <tr><th>Stakeholder</th><th>Acknowledged</th><th>Response Time</th><th>Response</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span className="mention">@Sarah Chen</span></td><td><span className="lozenge lozenge-success">✓ ACK</span></td><td>22 min</td><td>"Makes sense. No scope change — just timeline."</td></tr>
+            <tr><td><span className="mention">@Caroline Barragan</span></td><td><span className="lozenge lozenge-success">✓ ACK</span></td><td>1.5 hours</td><td>"Approved. Better to slip 2 weeks than launch without proactive alerts."</td></tr>
+            <tr><td><span className="mention">@Jamie Rivera</span></td><td><span className="lozenge lozenge-success">✓ ACK</span></td><td>3 hours</td><td>"Updated all PMM dates. No downstream issues."</td></tr>
+            <tr><td><span className="mention">@Marcus Kim</span></td><td><span className="lozenge lozenge-success">✓ ACK</span></td><td>6 hours</td><td>"Rescheduled 2 prospect demos. All good."</td></tr>
+            <tr><td><span className="mention">@Lisa Park</span></td><td><span className="lozenge lozenge-success">✓ ACK</span></td><td>8 hours</td><td>"Help center articles on hold. 5 min update."</td></tr>
+            <tr><td><span className="mention">@Ana Whitfield</span></td><td><span className="lozenge lozenge-success">✓ ACK</span></td><td>18 hours</td><td>"Extra time helps LATAM. Still tracking MX compliance."</td></tr>
+          </tbody>
+        </table>
+
+        <h1>Launch Hub Updated</h1>
+        <p>
+          The Central Launch Hub was updated in real-time to reflect the new date. The weekly Launch Tracker Sync digest on Feb 14 included the date change notification. No parallel tracking, no manual chasing.
+        </p>
+
+        <div className="panel panel-info">
+          <div className="panel-title">Protocol Effectiveness</div>
+          <strong>Before this protocol:</strong> Date changes were communicated via ad-hoc Slack DMs and 1:1s. Average time to full stakeholder awareness: 3–5 business days. PMM content published on wrong date twice in Q4 2025.<br/>
+          <strong>With the DCR protocol:</strong> Full stakeholder acknowledgment in 18 hours. Zero downstream surprises. Total time investment: ~2 minutes to submit, ~30 minutes aggregate stakeholder time.
+        </div>
+      </div>
+    </div>
+  )
+}
+
+
+function ExternalComms() {
+  return (
+    <div>
+      <h1 className="page-title">📨 External Communications</h1>
+      <div className="page-content">
+        <div className="panel panel-info">
+          <div className="panel-title">Approval Status</div>
+          All external communications have been reviewed by Legal (Mar 14) and approved by PMM Lead <span className="mention">@Jamie Rivera</span> (Mar 14). Ready to publish on launch day.
+        </div>
+
+        <h1>Customer Email — "What's New"</h1>
+        <div style={{ background: 'var(--neutral-10)', border: '1px solid var(--neutral-40)', borderRadius: '8px', padding: '20px' }}>
+          <div style={{ borderBottom: '1px solid var(--neutral-40)', paddingBottom: '12px', marginBottom: '16px', fontSize: '13px' }}>
+            <div><strong>From:</strong> Product Team &lt;product@company.com&gt;</div>
+            <div><strong>To:</strong> All fleet administrators</div>
+            <div><strong>Subject:</strong> New: Smarter Hours of Service management is here</div>
+            <div><strong>Send Date:</strong> March 28, 2026 · 10:00 AM PT</div>
+          </div>
+          <div style={{ fontSize: '14px', lineHeight: 1.7 }}>
+            <p>Hi [First Name],</p>
+            <p>We've redesigned the Hours of Service experience to help your fleet stay compliant and your drivers stay safe — automatically.</p>
+            <p><strong>What's new:</strong></p>
+            <ul>
+              <li><strong>Clearer driver HOS display</strong> — Drivers see remaining hours at a glance with a visual drive/rest timeline</li>
+              <li><strong>Proactive alerts</strong> — Push notifications warn drivers 30 minutes before reaching their HOS limit, with nearby rest stop suggestions</li>
+              <li><strong>Fleet HOS overview</strong> — Real-time dashboard shows every driver's status so you can adjust dispatch before violations happen</li>
+              <li><strong>Custom alert thresholds</strong> — Configure different alert windows for hazmat, standard, and short-haul drivers</li>
+            </ul>
+            <p>These features are rolling out to your fleet over the next 48 hours. No action is needed — your drivers will see the new experience automatically.</p>
+            <p><strong>Resources:</strong></p>
+            <ul>
+              <li>Getting started guide → [Help Center link]</li>
+              <li>Live webinar: April 4 at 11am PT → [Registration link]</li>
+              <li>Questions? Contact your CS representative or support@company.com</li>
+            </ul>
+            <p>Safe driving,<br/>The Product Team</p>
+          </div>
+        </div>
+
+        <h1>Release Notes — Help Center</h1>
+        <div style={{ background: 'var(--neutral-10)', border: '1px solid var(--neutral-40)', borderRadius: '8px', padding: '20px' }}>
+          <div style={{ fontSize: '13px', color: 'var(--neutral-300)', marginBottom: '8px' }}>Published to: help.company.com/releases · Status: <span className="lozenge lozenge-success">LIVE</span></div>
+          <h3 style={{ marginTop: 0 }}>ELD Compliance 2.0 — Hours of Service Redesign</h3>
+          <p style={{ fontSize: '13px', color: 'var(--neutral-300)' }}>March 28, 2026 · Fleet Safety</p>
+          <h3>Overview</h3>
+          <p>Our ELD compliance module has been completely redesigned to help fleets proactively manage Hours of Service compliance. This update affects all US and Canadian fleet customers.</p>
+          <h3>New Features</h3>
+          <ul>
+            <li><strong>Redesigned Driver HOS Dashboard:</strong> Clear remaining hours display, on-duty/driving/off-duty breakdown, and 7-day visual timeline.</li>
+            <li><strong>Proactive HOS Alerts:</strong> Push notifications 30 minutes before HOS limit with nearest rest stop suggestions.</li>
+            <li><strong>Fleet Manager HOS Overview:</strong> Real-time status of all drivers with color-coded compliance indicators and automated alerts.</li>
+            <li><strong>Custom Alert Thresholds:</strong> Configurable alert windows per driver group (standard, hazmat, short-haul exempt).</li>
+            <li><strong>Weekly Compliance Reports:</strong> Exportable HOS compliance summaries for fleet record-keeping.</li>
+          </ul>
+          <h3>Known Limitations</h3>
+          <ul>
+            <li>LATAM markets (Mexico, Brazil) will receive this update in a follow-on release (ETA: April 2026)</li>
+            <li>Canadian-specific ELD mandate variations are planned for Q3 2026</li>
+            <li>Offline mode for areas without cellular connectivity is not yet supported</li>
+          </ul>
+        </div>
+
+        <h1>Blog Post Draft</h1>
+        <div style={{ background: 'var(--neutral-10)', border: '1px solid var(--neutral-40)', borderRadius: '8px', padding: '20px' }}>
+          <div style={{ fontSize: '13px', color: 'var(--neutral-300)', marginBottom: '12px' }}>
+            Status: <span className="lozenge lozenge-info">DRAFTED</span> · Publish: company.com/blog · Launch Day 10am PT
+          </div>
+          <h2 style={{ marginTop: 0 }}>Stay Compliant, Stay Moving: Introducing Proactive Hours of Service Management</h2>
+          <p style={{ color: 'var(--neutral-300)', fontStyle: 'italic' }}>
+            [Full blog post content — 800 words covering the problem, solution, customer quotes from beta, and call to action. Draft complete and approved by Legal. Full text in Google Docs: <span className="mention">link</span>]
+          </p>
+          <p><strong>Key talking points covered:</strong></p>
+          <ul>
+            <li>FMCSA compliance challenges facing modern fleets</li>
+            <li>How proactive alerts reduce violations (beta data: 28% reduction)</li>
+            <li>Fleet manager dashboard as competitive differentiator</li>
+            <li>Customer quote from beta participant (approved by customer comms team)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+
+function FeatureOverview() {
+  return (
+    <div>
+      <h1 className="page-title">📷 Feature Overview & Screenshots</h1>
+      <div className="page-content">
+        <p>Visual overview of the three core surfaces shipping in ELD Compliance 2.0.</p>
+
+        <h1>1. Driver Mobile App — HOS Dashboard</h1>
+        <p>Redesigned driver-facing HOS screen with clear remaining hours, visual timeline, and proactive alerts.</p>
+        <div className="mockup-container">
+          <div className="mockup-toolbar"><div className="mockup-dot"/><div className="mockup-dot"/><div className="mockup-dot"/><span style={{marginLeft:'8px',fontSize:'12px',color:'var(--neutral-300)'}}>Driver App · iOS</span></div>
+          <div className="mockup-body" style={{display:'flex',flexDirection:'column',gap:'16px',maxWidth:'320px',margin:'0 auto'}}>
+            <div style={{background:'var(--blue-700)',borderRadius:'12px',padding:'20px',color:'#fff',textAlign:'center'}}>
+              <div style={{fontSize:'11px',opacity:0.7,textTransform:'uppercase',letterSpacing:'1px'}}>Remaining Drive Time</div>
+              <div style={{fontSize:'48px',fontWeight:700,lineHeight:1}}>6h 42m</div>
+              <div style={{fontSize:'12px',opacity:0.7,marginTop:'4px'}}>of 11h daily limit · Resets at 5:00 AM</div>
+            </div>
+            <div style={{display:'flex',gap:'8px'}}>
+              <div style={{flex:1,background:'var(--green-100)',borderRadius:'8px',padding:'12px',textAlign:'center'}}>
+                <div style={{fontSize:'10px',color:'var(--green-700)',fontWeight:600}}>ON DUTY</div>
+                <div style={{fontSize:'20px',fontWeight:700,color:'var(--green-700)'}}>2h 18m</div>
+              </div>
+              <div style={{flex:1,background:'var(--blue-100)',borderRadius:'8px',padding:'12px',textAlign:'center'}}>
+                <div style={{fontSize:'10px',color:'var(--blue-800)',fontWeight:600}}>DRIVING</div>
+                <div style={{fontSize:'20px',fontWeight:700,color:'var(--blue-800)'}}>4h 18m</div>
+              </div>
+              <div style={{flex:1,background:'var(--neutral-20)',borderRadius:'8px',padding:'12px',textAlign:'center'}}>
+                <div style={{fontSize:'10px',color:'var(--neutral-500)',fontWeight:600}}>OFF DUTY</div>
+                <div style={{fontSize:'20px',fontWeight:700,color:'var(--neutral-500)'}}>10h 0m</div>
+              </div>
+            </div>
+            <div style={{background:'var(--yellow-100)',border:'1px solid var(--yellow-500)',borderRadius:'8px',padding:'12px',display:'flex',gap:'8px',alignItems:'center'}}>
+              <span style={{fontSize:'20px'}}>⚠️</span>
+              <div style={{fontSize:'12px',color:'var(--yellow-700)'}}>
+                <strong>Alert:</strong> You'll reach your HOS limit at ~3:42 PM. Nearest rest stop: Flying J, 22 mi ahead.
+              </div>
+            </div>
+            <div style={{background:'var(--neutral-20)',borderRadius:'8px',padding:'12px'}}>
+              <div style={{fontSize:'11px',color:'var(--neutral-300)',marginBottom:'8px',fontWeight:600}}>7-DAY DRIVE/REST CYCLE</div>
+              <div style={{display:'flex',gap:'2px',height:'24px'}}>
+                {['var(--blue-500)','var(--green-500)','var(--neutral-40)','var(--blue-500)','var(--green-500)','var(--blue-500)','var(--blue-700)'].map((c,i)=>(
+                  <div key={i} style={{flex:1,background:c,borderRadius:'2px'}}/>
+                ))}
+              </div>
+              <div style={{display:'flex',justifyContent:'space-between',fontSize:'10px',color:'var(--neutral-200)',marginTop:'4px'}}>
+                <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Today</span>
+              </div>
+            </div>
+          </div>
+          <div className="mockup-label">Driver App — HOS Dashboard (P0: US-101, US-102, US-104)</div>
+        </div>
+
+        <h1>2. Fleet Manager Dashboard — HOS Overview</h1>
+        <p>Real-time view of all drivers' HOS status with proactive alerts for approaching limits.</p>
+        <div className="mockup-container">
+          <div className="mockup-toolbar"><div className="mockup-dot"/><div className="mockup-dot"/><div className="mockup-dot"/><span style={{marginLeft:'8px',fontSize:'12px',color:'var(--neutral-300)'}}>Fleet Dashboard · Web</span></div>
+          <div className="mockup-body">
+            <div style={{display:'flex',gap:'12px',marginBottom:'16px'}}>
+              <div style={{flex:1,background:'var(--green-100)',borderRadius:'8px',padding:'12px',textAlign:'center'}}>
+                <div style={{fontSize:'24px',fontWeight:700,color:'var(--green-700)'}}>847</div>
+                <div style={{fontSize:'11px',color:'var(--green-700)'}}>Compliant</div>
+              </div>
+              <div style={{flex:1,background:'var(--yellow-100)',borderRadius:'8px',padding:'12px',textAlign:'center'}}>
+                <div style={{fontSize:'24px',fontWeight:700,color:'var(--yellow-700)'}}>23</div>
+                <div style={{fontSize:'11px',color:'var(--yellow-700)'}}>Approaching Limit</div>
+              </div>
+              <div style={{flex:1,background:'var(--red-100)',borderRadius:'8px',padding:'12px',textAlign:'center'}}>
+                <div style={{fontSize:'24px',fontWeight:700,color:'var(--red-700)'}}>4</div>
+                <div style={{fontSize:'11px',color:'var(--red-700)'}}>Violation Risk</div>
+              </div>
+            </div>
+            <table className="confluence-table" style={{margin:0,fontSize:'12px'}}>
+              <thead><tr><th>Driver</th><th>Status</th><th>Remaining</th><th>Location</th><th>Alert</th></tr></thead>
+              <tbody>
+                <tr><td>Mike Johnson</td><td><span className="lozenge lozenge-error">CRITICAL</span></td><td>0h 32m</td><td>I-40, Amarillo TX</td><td>⚠️ Rest stop suggested</td></tr>
+                <tr><td>Rosa Martinez</td><td><span className="lozenge lozenge-moved">WARNING</span></td><td>1h 15m</td><td>I-10, Phoenix AZ</td><td>Approaching limit</td></tr>
+                <tr><td>Tom Bradley</td><td><span className="lozenge lozenge-success">OK</span></td><td>6h 42m</td><td>I-95, Richmond VA</td><td>—</td></tr>
+                <tr><td>Li Wei</td><td><span className="lozenge lozenge-success">OK</span></td><td>8h 10m</td><td>I-5, Portland OR</td><td>—</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="mockup-label">Fleet Manager Dashboard — HOS Overview (P0: US-201, US-202)</div>
+        </div>
+
+        <h1>3. Admin Settings — HOS Configuration</h1>
+        <p>Fleet administrators can configure custom HOS thresholds per driver group.</p>
+        <div className="mockup-container">
+          <div className="mockup-toolbar"><div className="mockup-dot"/><div className="mockup-dot"/><div className="mockup-dot"/><span style={{marginLeft:'8px',fontSize:'12px',color:'var(--neutral-300)'}}>Admin · Settings</span></div>
+          <div className="mockup-body">
+            <div style={{fontSize:'16px',fontWeight:600,marginBottom:'12px'}}>HOS Alert Configuration</div>
+            <div style={{display:'flex',flexDirection:'column',gap:'12px'}}>
+              <div style={{display:'flex',alignItems:'center',gap:'12px',padding:'12px',background:'white',borderRadius:'8px',border:'1px solid var(--neutral-40)'}}>
+                <div style={{fontWeight:500,width:'200px'}}>Standard Drivers</div>
+                <div style={{fontSize:'12px',color:'var(--neutral-300)'}}>Alert at:</div>
+                <div style={{background:'var(--blue-100)',padding:'4px 12px',borderRadius:'4px',fontWeight:600,color:'var(--blue-800)'}}>60 min</div>
+                <div style={{fontSize:'12px',color:'var(--neutral-300)'}}>before limit</div>
+              </div>
+              <div style={{display:'flex',alignItems:'center',gap:'12px',padding:'12px',background:'white',borderRadius:'8px',border:'1px solid var(--neutral-40)'}}>
+                <div style={{fontWeight:500,width:'200px'}}>Hazmat Drivers</div>
+                <div style={{fontSize:'12px',color:'var(--neutral-300)'}}>Alert at:</div>
+                <div style={{background:'var(--yellow-100)',padding:'4px 12px',borderRadius:'4px',fontWeight:600,color:'var(--yellow-700)'}}>90 min</div>
+                <div style={{fontSize:'12px',color:'var(--neutral-300)'}}>before limit</div>
+              </div>
+              <div style={{display:'flex',alignItems:'center',gap:'12px',padding:'12px',background:'white',borderRadius:'8px',border:'1px solid var(--neutral-40)'}}>
+                <div style={{fontWeight:500,width:'200px'}}>Short-Haul Exempt</div>
+                <div style={{fontSize:'12px',color:'var(--neutral-300)'}}>Alert at:</div>
+                <div style={{background:'var(--neutral-20)',padding:'4px 12px',borderRadius:'4px',fontWeight:600,color:'var(--neutral-500)'}}>Disabled</div>
+                <div style={{fontSize:'12px',color:'var(--neutral-300)'}}>(150 air-mile radius exempt)</div>
+              </div>
+            </div>
+          </div>
+          <div className="mockup-label">Admin Settings — HOS Configuration (P2: US-204)</div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+
+function GTMPlan({ onNavigate }) {
+  return (
+    <div>
+      <h1 className="page-title">📣 GTM Launch Plan</h1>
+      <p style={{ color: 'var(--neutral-300)', fontSize: '13px', marginBottom: '16px' }}>ELD Compliance 2.0 — Go-to-Market Strategy & Execution Plan</p>
+      <div className="page-content">
+        <div className="properties-panel">
+          <div className="properties-row">
+            <div className="properties-key">PMM Owner</div>
+            <div className="properties-value"><span className="mention">@Jamie Rivera</span></div>
+          </div>
+          <div className="properties-row">
+            <div className="properties-key">Launch Tier</div>
+            <div className="properties-value"><span className="lozenge lozenge-bold-info">TIER 1</span> — 4-week lead time, full cross-functional coordination</div>
+          </div>
+          <div className="properties-row">
+            <div className="properties-key">Launch Date</div>
+            <div className="properties-value">March 28, 2026</div>
+          </div>
+          <div className="properties-row">
+            <div className="properties-key">Audiences</div>
+            <div className="properties-value">All fleet customers (12,400 drivers), Sales, CS, Support, Partners</div>
+          </div>
+        </div>
+
+        <h1>Positioning & Messaging</h1>
+        <div className="panel panel-info">
+          <div className="panel-title">Core Message</div>
+          <p style={{ fontSize: '16px', fontWeight: 500, fontStyle: 'italic', margin: '4px 0' }}>
+            "Stay compliant, stay moving. Our new HOS experience keeps your drivers on the road and your fleet out of trouble — automatically."
+          </p>
+        </div>
+
+        <h3>Key Messages by Audience</h3>
+        <table className="confluence-table">
+          <thead><tr><th>Audience</th><th>Primary Message</th><th>Proof Point</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>Fleet Managers</strong></td>
+              <td>Real-time visibility into every driver's HOS status. Prevent violations before they happen.</td>
+              <td>Beta customers saw 28% fewer violations in first 30 days</td>
+            </tr>
+            <tr>
+              <td><strong>Drivers</strong></td>
+              <td>A simpler, clearer HOS screen that tells you exactly how much time you have left.</td>
+              <td>Redesigned based on 47 driver interviews and 1,200 support tickets</td>
+            </tr>
+            <tr>
+              <td><strong>Safety Directors</strong></td>
+              <td>Automated compliance reporting that keeps your CSA scores clean.</td>
+              <td>99.5% FMCSA compliance rate in pre-launch testing</td>
+            </tr>
+            <tr>
+              <td><strong>Prospects</strong></td>
+              <td>The most advanced ELD compliance solution in the market — now with proactive HOS management.</td>
+              <td>Competitive differentiator vs. Samsara and KeepTruckin</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h1>Launch Coordination Timeline</h1>
+        <p>Per <span className="lozenge lozenge-bold-info">TIER 1</span> protocol: 4-week coordination window required.</p>
+
+        <div className="timeline">
+          <div className="timeline-item">
+            <div className="timeline-dot done">✓</div>
+            <div className="timeline-content">
+              <div className="timeline-date">T-28 Days · Feb 28</div>
+              <div className="timeline-title">PMM Alignment Brief Distributed</div>
+              <div className="timeline-detail">1-page brief sent to Sales, CS, Support, Global Ops. PMM owner assigned.</div>
+            </div>
+          </div>
+          <div className="timeline-item">
+            <div className="timeline-dot done">✓</div>
+            <div className="timeline-content">
+              <div className="timeline-date">T-21 Days · Mar 7</div>
+              <div className="timeline-title">Sales Enablement Package Complete</div>
+              <div className="timeline-detail">Talk track, objection handling, competitive positioning deck delivered to Sales.</div>
+            </div>
+          </div>
+          <div className="timeline-item">
+            <div className="timeline-dot done">✓</div>
+            <div className="timeline-content">
+              <div className="timeline-date">T-14 Days · Mar 14</div>
+              <div className="timeline-title">Customer Communication Drafts Finalized</div>
+              <div className="timeline-detail">Email templates, in-app messaging, blog post reviewed by Legal and PMM.</div>
+            </div>
+          </div>
+          <div className="timeline-item">
+            <div className="timeline-dot current">●</div>
+            <div className="timeline-content">
+              <div className="timeline-date">T-7 Days · Mar 21</div>
+              <div className="timeline-title">Training Sessions Delivered</div>
+              <div className="timeline-detail">Sales + CS live training complete. Support team FAQ published. Driver training videos uploaded.</div>
+            </div>
+          </div>
+          <div className="timeline-item">
+            <div className="timeline-dot upcoming">○</div>
+            <div className="timeline-content">
+              <div className="timeline-date">T-3 Days · Mar 25</div>
+              <div className="timeline-title">Go/No-Go Meeting</div>
+              <div className="timeline-detail">Product Director + PMM Lead confirm launch readiness. <span className="page-link" onClick={() => onNavigate('gonogo')}>View agenda →</span></div>
+            </div>
+          </div>
+          <div className="timeline-item">
+            <div className="timeline-dot upcoming">○</div>
+            <div className="timeline-content">
+              <div className="timeline-date">Launch Day · Mar 28</div>
+              <div className="timeline-title">🚀 Coordinated Launch</div>
+              <div className="timeline-detail">Blog post, email campaign, in-app announcement, Sales outreach all go live at 9am PT.</div>
+            </div>
+          </div>
+        </div>
+
+        <h1>Sales Enablement</h1>
+        <table className="confluence-table">
+          <thead><tr><th>Asset</th><th>Status</th><th>Owner</th></tr></thead>
+          <tbody>
+            <tr><td>Sales talk track (2-pager)</td><td><span className="lozenge lozenge-success">COMPLETE</span></td><td><span className="mention">@Marcus Kim</span></td></tr>
+            <tr><td>Competitive positioning deck</td><td><span className="lozenge lozenge-success">COMPLETE</span></td><td><span className="mention">@Jamie Rivera</span></td></tr>
+            <tr><td>Demo script + sandbox environment</td><td><span className="lozenge lozenge-success">COMPLETE</span></td><td><span className="mention">@Sarah Chen</span></td></tr>
+            <tr><td>Objection handling guide</td><td><span className="lozenge lozenge-success">COMPLETE</span></td><td><span className="mention">@Marcus Kim</span></td></tr>
+            <tr><td>Pricing & packaging FAQ</td><td><span className="lozenge lozenge-success">COMPLETE</span></td><td><span className="mention">@Jamie Rivera</span></td></tr>
+          </tbody>
+        </table>
+
+        <h1>Customer Communication Plan</h1>
+        <table className="confluence-table">
+          <thead><tr><th>Channel</th><th>Timing</th><th>Audience</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Email — "What's New" announcement</td><td>Launch Day</td><td>All fleet admins</td><td><span className="lozenge lozenge-info">DRAFTED</span></td></tr>
+            <tr><td>In-app banner notification</td><td>Launch Day</td><td>All fleet managers</td><td><span className="lozenge lozenge-info">DRAFTED</span></td></tr>
+            <tr><td>Driver push notification</td><td>Launch Day + 1</td><td>All active drivers</td><td><span className="lozenge lozenge-info">DRAFTED</span></td></tr>
+            <tr><td>Blog post</td><td>Launch Day</td><td>Public</td><td><span className="lozenge lozenge-info">DRAFTED</span></td></tr>
+            <tr><td>Help center articles (3)</td><td>Launch Day - 1</td><td>Self-serve</td><td><span className="lozenge lozenge-success">COMPLETE</span></td></tr>
+            <tr><td>Webinar — "Getting Started"</td><td>Launch Day + 7</td><td>All customers, prospects</td><td><span className="lozenge lozenge-moved">SCHEDULED</span></td></tr>
+          </tbody>
+        </table>
+
+        <div className="panel panel-success">
+          <div className="panel-title">Tier 1 Stakeholder Touchpoint</div>
+          Per the Product Operating System, this launch requires full PMM Alignment Brief (completed Feb 28), Launch Briefing Package (in progress), and Go/No-Go meeting 72 hours pre-launch (scheduled Mar 25).
+        </div>
+      </div>
+    </div>
+  )
+}
+
+
+function GoNoGo({ onNavigate }) {
+  return (
+    <div>
+      <h1 className="page-title">📝 Go/No-Go Meeting — Mar 25, 2026</h1>
+      <div className="page-content">
+        <div className="panel panel-info">
+          <div className="panel-title">Tier 1 — Go/No-Go Protocol</div>
+          Per the Product Operating System, Tier 1 launches require a 30-minute structured Go/No-Go review 72 hours pre-launch. Any participant can call no-go with documented rationale. Decision is binding until reconvened.
+        </div>
+
+        <div className="properties-panel">
+          <div className="properties-row"><div className="properties-key">Date</div><div className="properties-value">March 25, 2026 · 2:00 PM PT (T-72 hours)</div></div>
+          <div className="properties-row"><div className="properties-key">Duration</div><div className="properties-value">30 minutes</div></div>
+          <div className="properties-row"><div className="properties-key">Decision Makers</div><div className="properties-value"><span className="mention">@Caroline Barragan</span> (Product Director) + <span className="mention">@Jamie Rivera</span> (PMM Lead)</div></div>
+          <div className="properties-row"><div className="properties-key">Facilitator</div><div className="properties-value"><span className="mention">@Brian Miller</span> (Product Ops)</div></div>
+          <div className="properties-row">
+            <div className="properties-key">Required Attendees</div>
+            <div className="properties-value">
+              <span className="mention">@Sarah Chen</span>, <span className="mention">@David Torres</span>, <span className="mention">@Marcus Kim</span>, <span className="mention">@Lisa Park</span>, <span className="mention">@Ana Whitfield</span>
+            </div>
+          </div>
+          <div className="properties-row"><div className="properties-key">Status</div><div className="properties-value"><span className="lozenge lozenge-info">SCHEDULED</span></div></div>
+        </div>
+
+        <h1>Structured Agenda (30 min)</h1>
+        <table className="confluence-table">
+          <thead><tr><th>Time</th><th>Topic</th><th>Owner</th><th>Pre-Read</th></tr></thead>
+          <tbody>
+            <tr><td>0–5 min</td><td>Launch Hub status summary</td><td><span className="mention">@Brian Miller</span></td><td><span className="page-link" onClick={() => onNavigate('home')}>Launch Hub</span></td></tr>
+            <tr><td>5–10 min</td><td>Engineering readiness confirmation</td><td><span className="mention">@David Torres</span></td><td><span className="page-link" onClick={() => onNavigate('checklist')}>Checklist</span></td></tr>
+            <tr><td>10–15 min</td><td>GTM & stakeholder readiness</td><td><span className="mention">@Jamie Rivera</span></td><td><span className="page-link" onClick={() => onNavigate('gtm')}>GTM Plan</span></td></tr>
+            <tr><td>15–20 min</td><td>Open blockers review</td><td><span className="mention">@Brian Miller</span></td><td>—</td></tr>
+            <tr><td>20–25 min</td><td>Global market status (LATAM decision)</td><td><span className="mention">@Ana Whitfield</span></td><td>—</td></tr>
+            <tr><td>25–30 min</td><td><strong>Go/No-Go Decision</strong></td><td><span className="mention">@Caroline Barragan</span></td><td><span className="page-link" onClick={() => onNavigate('signoffs')}>Sign-offs</span></td></tr>
+          </tbody>
+        </table>
+
+        <h1>Go/No-Go Decision Criteria</h1>
+        <p>All of the following must be true for a <strong>GO</strong> decision:</p>
+
+        <div className="checklist-item">
+          <div className="checklist-check done">✓</div>
+          <div className="checklist-content">
+            <div className="checklist-title">All P0 features delivered and QA-verified</div>
+            <div className="checklist-detail">247 test cases passed. 0 P0/P1 open bugs.</div>
+          </div>
+        </div>
+        <div className="checklist-item">
+          <div className="checklist-check done">✓</div>
+          <div className="checklist-content">
+            <div className="checklist-title">All required stakeholder sign-offs received (or exception documented)</div>
+            <div className="checklist-detail">5/6 signed off. Global Ops pending — exception path documented for LATAM decouple.</div>
+          </div>
+        </div>
+        <div className="checklist-item">
+          <div className="checklist-check done">✓</div>
+          <div className="checklist-content">
+            <div className="checklist-title">Customer communications drafted and approved by Legal</div>
+            <div className="checklist-detail">Email, in-app, blog, push all reviewed. Ready to send.</div>
+          </div>
+        </div>
+        <div className="checklist-item">
+          <div className="checklist-check done">✓</div>
+          <div className="checklist-content">
+            <div className="checklist-title">Sales, CS, and Support training completed</div>
+            <div className="checklist-detail">3 training sessions. 94% attendance. FAQ and knowledge base published.</div>
+          </div>
+        </div>
+        <div className="checklist-item">
+          <div className="checklist-check done">✓</div>
+          <div className="checklist-content">
+            <div className="checklist-title">Rollback plan documented and tested</div>
+            <div className="checklist-detail">Feature flag kill switch verified on staging. Rollback SOP reviewed with SRE.</div>
+          </div>
+        </div>
+        <div className="checklist-item">
+          <div className="checklist-check done">✓</div>
+          <div className="checklist-content">
+            <div className="checklist-title">Monitoring and alerting configured</div>
+            <div className="checklist-detail">Datadog dashboard live. PagerDuty escalation policy set. Error rate thresholds configured.</div>
+          </div>
+        </div>
+        <div className="checklist-item">
+          <div className="checklist-check blocked">!</div>
+          <div className="checklist-content">
+            <div className="checklist-title">No unresolved P0 blockers</div>
+            <div className="checklist-detail" style={{ color: 'var(--yellow-700)' }}>
+              LATAM blocker still open. Recommendation: proceed with US/CAN launch, decouple LATAM to follow-on window.
+            </div>
+          </div>
+        </div>
+
+        <h1>Expected Decision</h1>
+        <div className="panel panel-success">
+          <div className="panel-title">Pre-Meeting Assessment</div>
+          <strong>Recommendation: GO for US/CAN.</strong> All criteria met for domestic launch. LATAM to be decoupled with separate Go/No-Go when regulatory approval is received (ETA: Apr 5–12).<br/><br/>
+          This recommendation will be formally presented by <span className="mention">@Brian Miller</span> at the meeting. <span className="mention">@Caroline Barragan</span> and <span className="mention">@Jamie Rivera</span> will make the final call.
+        </div>
+
+        <h1>Exception Protocol</h1>
+        <p>If any participant calls <strong>No-Go</strong>:</p>
+        <ol>
+          <li>Documented rationale captured in this page within 1 hour of meeting</li>
+          <li>Central Ops (Brian Miller) convenes a remediation plan within 24 hours</li>
+          <li>Reconvened Go/No-Go meeting scheduled within 48 hours</li>
+          <li>New target date submitted via DCR protocol if launch is delayed</li>
+        </ol>
+      </div>
+    </div>
+  )
+}
+
+
+function InternalComms() {
+  return (
+    <div>
+      <h1 className="page-title">📨 Internal Communications</h1>
+      <div className="page-content">
+        <h1>Slack Announcement — #product-launches</h1>
+        <div style={{ background: 'var(--neutral-10)', border: '1px solid var(--neutral-40)', borderRadius: '8px', padding: '16px', fontFamily: 'Lato, sans-serif' }}>
+          <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
+            <span className="avatar avatar-teal" style={{ width: '36px', height: '36px', fontSize: '12px' }}>BM</span>
+            <div style={{ flex: 1 }}>
+              <div><strong>Brian Miller</strong> <span style={{ fontSize: '12px', color: 'var(--neutral-200)' }}>10:00 AM · Mar 28</span></div>
+              <div style={{ marginTop: '8px', fontSize: '14px', lineHeight: 1.6 }}>
+                <p>🚀 <strong>ELD Compliance 2.0 is LIVE</strong></p>
+                <p style={{ margin: '8px 0' }}>The new Hours of Service experience is rolling out to all US/CAN fleet customers starting today. Here's what you need to know:</p>
+                <p style={{ margin: '4px 0' }}>📱 <strong>Drivers</strong> get a redesigned HOS dashboard with remaining hours at a glance + proactive push alerts 30 min before hitting their limit</p>
+                <p style={{ margin: '4px 0' }}>📊 <strong>Fleet Managers</strong> get real-time HOS status for every driver with automated alerts for approaching violations</p>
+                <p style={{ margin: '4px 0' }}>⚙️ <strong>Admins</strong> can configure custom HOS alert thresholds by driver group</p>
+                <p style={{ margin: '8px 0' }}><strong>Rollout plan:</strong> 10% of fleets today → 50% tomorrow → 100% by Mar 30</p>
+                <p style={{ margin: '8px 0' }}>📚 Resources:<br/>• Sales talk track: <span className="mention">#sales-enablement</span><br/>• Support FAQ: Help Center (live)<br/>• Customer email: Going out at 10am PT</p>
+                <p style={{ margin: '8px 0' }}>Questions? Ping <span className="mention">@Sarah Chen</span> (product), <span className="mention">@Jamie Rivera</span> (PMM), or <span className="mention">@Brian Miller</span> (ops).</p>
+                <p style={{ margin: '8px 0' }}>cc: <span className="mention">@channel</span></p>
+              </div>
+              <div style={{ display: 'flex', gap: '8px', marginTop: '8px' }}>
+                <span style={{ background: 'var(--neutral-20)', borderRadius: '12px', padding: '2px 8px', fontSize: '12px' }}>🚀 14</span>
+                <span style={{ background: 'var(--neutral-20)', borderRadius: '12px', padding: '2px 8px', fontSize: '12px' }}>🎉 8</span>
+                <span style={{ background: 'var(--neutral-20)', borderRadius: '12px', padding: '2px 8px', fontSize: '12px' }}>💪 6</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h1>Internal Email — Sales & CS Teams</h1>
+        <div style={{ background: 'var(--neutral-10)', border: '1px solid var(--neutral-40)', borderRadius: '8px', padding: '20px' }}>
+          <div style={{ borderBottom: '1px solid var(--neutral-40)', paddingBottom: '12px', marginBottom: '12px', fontSize: '13px' }}>
+            <div><strong>From:</strong> Brian Miller &lt;brian@contextovercontrol.com&gt;</div>
+            <div><strong>To:</strong> Sales-All, CS-All, Support-All</div>
+            <div><strong>Subject:</strong> 🚀 ELD Compliance 2.0 launches March 28 — what you need to know</div>
+          </div>
+          <div style={{ fontSize: '14px', lineHeight: 1.7 }}>
+            <p>Team,</p>
+            <p>ELD Compliance 2.0 launches this Friday, March 28. This is a <strong>Tier 1 launch</strong> affecting all fleet customers.</p>
+            <p><strong>What's shipping:</strong></p>
+            <ul>
+              <li>Redesigned driver HOS dashboard (clearer remaining hours, 7-day visual timeline)</li>
+              <li>Proactive push notifications before drivers hit HOS limits</li>
+              <li>Fleet manager real-time HOS overview with automated violation alerts</li>
+              <li>Configurable HOS alert thresholds by driver group</li>
+            </ul>
+            <p><strong>What you need to do:</strong></p>
+            <ul>
+              <li><strong>Sales:</strong> Review the 2-page talk track in #sales-enablement. Updated competitive positioning vs. Samsara attached.</li>
+              <li><strong>CS:</strong> Proactively reach out to your top 10 accounts. Webinar registration link goes live Monday.</li>
+              <li><strong>Support:</strong> 3 new help center articles are live. Escalation path documented in the internal FAQ.</li>
+            </ul>
+            <p>If you haven't completed the training session, the recording is in the LMS. Please review before Friday.</p>
+            <p>Questions → #eld-compliance-2 channel or ping me directly.</p>
+            <p>— Brian</p>
+          </div>
+        </div>
+
+        <h1>Slack Alert — Date Change Notification (Feb 12)</h1>
+        <div style={{ background: 'var(--neutral-10)', border: '1px solid var(--neutral-40)', borderRadius: '8px', padding: '16px' }}>
+          <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
+            <div style={{ width: '36px', height: '36px', borderRadius: '4px', background: 'var(--yellow-500)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px', flexShrink: 0 }}>⚠️</div>
+            <div style={{ flex: 1 }}>
+              <div><strong>Launch Hub Bot</strong> <span style={{ fontSize: '12px', color: 'var(--neutral-200)' }}>2:15 PM · Feb 12</span></div>
+              <div style={{ marginTop: '8px', background: 'var(--yellow-100)', border: '1px solid var(--yellow-500)', borderRadius: '4px', padding: '12px', fontSize: '13px' }}>
+                <p style={{ margin: 0 }}><strong>📅 DATE CHANGE REQUEST — DCR-2026-017</strong></p>
+                <p style={{ margin: '8px 0 0' }}><strong>Launch:</strong> ELD Compliance 2.0<br/><strong>Old Date:</strong> <span style={{ textDecoration: 'line-through' }}>March 14, 2026</span><br/><strong>New Date:</strong> March 28, 2026 (+14 days)<br/><strong>Reason:</strong> iOS push notification infrastructure issue<br/><strong>Submitted by:</strong> @David Torres</p>
+                <p style={{ margin: '8px 0 0', fontWeight: 600 }}>⏰ 24-hour acknowledgment required from: @Sarah Chen @Caroline Barragan @Jamie Rivera @Marcus Kim @Lisa Park @Ana Whitfield</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+
+function KickoffMeeting({ onNavigate }) {
+  return (
+    <div>
+      <h1 className="page-title">📝 Kickoff Meeting — Jan 15, 2026</h1>
+      <div className="page-content">
+        <div className="properties-panel">
+          <div className="properties-row"><div className="properties-key">Date</div><div className="properties-value">January 15, 2026 · 10:00 AM PT</div></div>
+          <div className="properties-row"><div className="properties-key">Duration</div><div className="properties-value">45 minutes</div></div>
+          <div className="properties-row"><div className="properties-key">Facilitator</div><div className="properties-value"><span className="mention">@Brian Miller</span> (Product Ops)</div></div>
+          <div className="properties-row">
+            <div className="properties-key">Attendees</div>
+            <div className="properties-value">
+              <span className="mention">@Sarah Chen</span> (PM), <span className="mention">@David Torres</span> (Eng), <span className="mention">@Priya Patel</span> (Design), <span className="mention">@Jamie Rivera</span> (PMM), <span className="mention">@Ana Whitfield</span> (Global Ops), <span className="mention">@Caroline Barragan</span> (Product Director)
+            </div>
+          </div>
+        </div>
+
+        <h1>Agenda</h1>
+        <ol>
+          <li>Discovery findings recap — Sarah Chen (10 min)</li>
+          <li>Scope & tier designation — Brian Miller (5 min)</li>
+          <li>Technical approach & timeline — David Torres (10 min)</li>
+          <li>Global market considerations — Ana Whitfield (5 min)</li>
+          <li>GTM & stakeholder coordination plan — Jamie Rivera (5 min)</li>
+          <li>Q&A and next steps (10 min)</li>
+        </ol>
+
+        <h1>Key Decisions</h1>
+        <div className="panel panel-success">
+          <div className="panel-title">Decision 1</div>
+          <strong>Launch tier designated as Tier 1.</strong> Rationale: impacts all customers, major driver-facing workflow change, requires full Sales/CS/Support/driver training. Approved by <span className="mention">@Caroline Barragan</span>.
+        </div>
+        <div className="panel panel-success">
+          <div className="panel-title">Decision 2</div>
+          <strong>Target launch date: March 14, 2026.</strong> 8-week build cycle. Engineering capacity confirmed by <span className="mention">@David Torres</span>. <em>(Later revised to Mar 28 via <span className="page-link" onClick={() => onNavigate('dcr')}>DCR-2026-017</span>.)</em>
+        </div>
+        <div className="panel panel-success">
+          <div className="panel-title">Decision 3</div>
+          <strong>LATAM rollout will be pursued but can be decoupled if regulatory approval delays.</strong> US/CAN launch is primary. <span className="mention">@Ana Whitfield</span> will track MX/BR compliance timeline independently.
+        </div>
+
+        <h1>Discussion Notes</h1>
+        <ul>
+          <li><span className="mention">@Sarah Chen</span> presented discovery findings: 47 customer interviews, core themes around HOS visibility, proactive alerts, and fleet manager dashboard. NPS detractor theme #2 is ELD confusion.</li>
+          <li><span className="mention">@David Torres</span> confirmed HOS API v3 work is already in progress on Platform team. Main risk: push notification infrastructure needs upgrade for location-aware triggers. Estimated 2-week dependency.</li>
+          <li><span className="mention">@Caroline Barragan</span> flagged that this is the highest-priority launch for Q1. Asked for bi-weekly updates in the Planning Health Check cadence.</li>
+          <li><span className="mention">@Jamie Rivera</span> requested PMM Alignment Brief by Feb 28 (T-28 days per Tier 1 protocol). <span className="mention">@Brian Miller</span> confirmed this is already in the coordination plan.</li>
+          <li><span className="mention">@Ana Whitfield</span> raised LATAM regulatory complexity — MX has different HOS thresholds. Agreed to pursue but not block the launch.</li>
+        </ul>
+
+        <h1>Action Items</h1>
+        <div className="action-item"><div className="action-checkbox checked">✓</div><span><span className="mention">@Sarah Chen</span> — Finalize PRD by Jan 30</span></div>
+        <div className="action-item"><div className="action-checkbox checked">✓</div><span><span className="mention">@David Torres</span> — Confirm Platform team dependency timeline by Jan 22</span></div>
+        <div className="action-item"><div className="action-checkbox checked">✓</div><span><span className="mention">@Brian Miller</span> — Set up Launch Hub in Jira, configure 8 required fields</span></div>
+        <div className="action-item"><div className="action-checkbox checked">✓</div><span><span className="mention">@Jamie Rivera</span> — Draft PMM Alignment Brief, target Feb 28 distribution</span></div>
+        <div className="action-item"><div className="action-checkbox checked">✓</div><span><span className="mention">@Ana Whitfield</span> — Initiate LATAM regulatory review with MX compliance team</span></div>
+      </div>
+    </div>
+  )
+}
+
+
+function LaunchChecklist({ onNavigate }) {
+  return (
+    <div>
+      <h1 className="page-title">✅ Launch Readiness Checklist</h1>
+      <p style={{ color: 'var(--neutral-300)', fontSize: '13px', marginBottom: '16px' }}>ELD Compliance 2.0 — Stage-Gate Verification · 14 of 17 items complete</p>
+      <div className="page-content">
+        <div className="panel panel-info">
+          <div className="panel-title">Checklist Status</div>
+          <div style={{ display: 'flex', gap: '16px', alignItems: 'center', flexWrap: 'wrap' }}>
+            <span><strong>14/17</strong> complete</span>
+            <span className="lozenge lozenge-bold-success">82% READY</span>
+            <span style={{ fontSize: '12px', color: 'var(--neutral-300)' }}>Last updated: Mar 7, 2026 by <span className="mention">@Brian Miller</span></span>
+          </div>
+          <div style={{ marginTop: '8px', height: '8px', background: 'var(--neutral-40)', borderRadius: '4px', overflow: 'hidden' }}>
+            <div style={{ width: '82%', height: '100%', background: 'var(--green-500)', borderRadius: '4px' }} />
+          </div>
+        </div>
+
+        <h1>Engineering Readiness</h1>
+        <div className="checklist-item">
+          <div className="checklist-check done">✓</div>
+          <div className="checklist-content">
+            <div className="checklist-title">All feature PRs merged to main</div>
+            <div className="checklist-detail"><span className="mention">@David Torres</span> · Mar 8 — 47 PRs merged, 0 open</div>
+          </div>
+        </div>
+        <div className="checklist-item">
+          <div className="checklist-check done">✓</div>
+          <div className="checklist-content">
+            <div className="checklist-title">QA sign-off — full regression suite passed</div>
+            <div className="checklist-detail"><span className="mention">@QA Team</span> · Mar 9 — 247 test cases, 0 P0/P1 failures, 2 P3 known issues documented</div>
+          </div>
+        </div>
+        <div className="checklist-item">
+          <div className="checklist-check done">✓</div>
+          <div className="checklist-content">
+            <div className="checklist-title">Staging environment verified</div>
+            <div className="checklist-detail"><span className="mention">@David Torres</span> · Mar 10 — Full E2E verification on staging. Performance benchmarks met.</div>
+          </div>
+        </div>
+        <div className="checklist-item">
+          <div className="checklist-check done">✓</div>
+          <div className="checklist-content">
+            <div className="checklist-title">Feature flags configured for phased rollout</div>
+            <div className="checklist-detail"><span className="mention">@David Torres</span> · Mar 10 — 10% → 50% → 100% rollout plan. Kill switch verified.</div>
+          </div>
+        </div>
+        <div className="checklist-item">
+          <div className="checklist-check done">✓</div>
+          <div className="checklist-content">
+            <div className="checklist-title">Monitoring & alerting configured</div>
+            <div className="checklist-detail"><span className="mention">@SRE Team</span> · Mar 10 — Datadog dashboards, PagerDuty escalation policy, error rate thresholds set.</div>
+          </div>
+        </div>
+
+        <h1>Product & PMM Readiness</h1>
+        <div className="checklist-item">
+          <div className="checklist-check done">✓</div>
+          <div className="checklist-content">
+            <div className="checklist-title">PRD approved by Product Director</div>
+            <div className="checklist-detail"><span className="mention">@Caroline Barragan</span> · Jan 30 — <span className="page-link" onClick={() => onNavigate('prd')}>View PRD →</span></div>
+          </div>
+        </div>
+        <div className="checklist-item">
+          <div className="checklist-check done">✓</div>
+          <div className="checklist-content">
+            <div className="checklist-title">PMM Alignment Brief sent and acknowledged</div>
+            <div className="checklist-detail"><span className="mention">@Jamie Rivera</span> · Feb 28 — All stakeholders acknowledged within 48 hours</div>
+          </div>
+        </div>
+        <div className="checklist-item">
+          <div className="checklist-check done">✓</div>
+          <div className="checklist-content">
+            <div className="checklist-title">Launch Briefing Package distributed</div>
+            <div className="checklist-detail"><span className="mention">@Jamie Rivera</span> · Mar 7 — Full briefing (Tier 1) to Sales, CS, Support, Global Ops</div>
+          </div>
+        </div>
+        <div className="checklist-item">
+          <div className="checklist-check done">✓</div>
+          <div className="checklist-content">
+            <div className="checklist-title">Customer communications drafted and reviewed</div>
+            <div className="checklist-detail"><span className="mention">@Jamie Rivera</span> · Mar 14 — Email, in-app, blog, push. Legal review complete. <span className="page-link" onClick={() => onNavigate('external')}>View comms →</span></div>
+          </div>
+        </div>
+
+        <h1>Sales & CS Readiness</h1>
+        <div className="checklist-item">
+          <div className="checklist-check done">✓</div>
+          <div className="checklist-content">
+            <div className="checklist-title">Sales enablement package delivered</div>
+            <div className="checklist-detail"><span className="mention">@Marcus Kim</span> · Mar 7 — Talk track, competitive deck, demo script, objection guide</div>
+          </div>
+        </div>
+        <div className="checklist-item">
+          <div className="checklist-check done">✓</div>
+          <div className="checklist-content">
+            <div className="checklist-title">Sales + CS live training sessions completed</div>
+            <div className="checklist-detail"><span className="mention">@Marcus Kim</span> · Mar 7 — 3 sessions, 94% attendance, recording uploaded to LMS</div>
+          </div>
+        </div>
+
+        <h1>Support Readiness</h1>
+        <div className="checklist-item">
+          <div className="checklist-check done">✓</div>
+          <div className="checklist-content">
+            <div className="checklist-title">Support FAQ and knowledge base articles published</div>
+            <div className="checklist-detail"><span className="mention">@Lisa Park</span> · Mar 6 — 3 help center articles, internal FAQ, escalation flowchart</div>
+          </div>
+        </div>
+        <div className="checklist-item">
+          <div className="checklist-check done">✓</div>
+          <div className="checklist-content">
+            <div className="checklist-title">Support team trained on new HOS features</div>
+            <div className="checklist-detail"><span className="mention">@Lisa Park</span> · Mar 7 — Tier 1/2/3 support flows documented and rehearsed</div>
+          </div>
+        </div>
+
+        <h1>Global & Compliance</h1>
+        <div className="checklist-item">
+          <div className="checklist-check done">✓</div>
+          <div className="checklist-content">
+            <div className="checklist-title">US/Canada regulatory compliance verified</div>
+            <div className="checklist-detail"><span className="mention">@Legal Team</span> · Mar 5 — FMCSA compliance validation complete. 99.5% pass rate.</div>
+          </div>
+        </div>
+        <div className="checklist-item">
+          <div className="checklist-check blocked">!</div>
+          <div className="checklist-content">
+            <div className="checklist-title">LATAM regulatory approval (Mexico)</div>
+            <div className="checklist-detail" style={{ color: 'var(--yellow-700)' }}>
+              <span className="mention">@Ana Whitfield</span> · <strong>BLOCKED</strong> — MX compliance team review pending. ETA Mar 15. Decision: decouple LATAM if not resolved by Mar 20.
+            </div>
+          </div>
+        </div>
+        <div className="checklist-item">
+          <div className="checklist-check pending" />
+          <div className="checklist-content">
+            <div className="checklist-title">Spanish-language driver training materials approved</div>
+            <div className="checklist-detail"><span className="mention">@Ana Whitfield</span> · Dependent on LATAM regulatory approval above</div>
+          </div>
+        </div>
+        <div className="checklist-item">
+          <div className="checklist-check pending" />
+          <div className="checklist-content">
+            <div className="checklist-title">Go/No-Go meeting completed</div>
+            <div className="checklist-detail">Scheduled Mar 25 · <span className="page-link" onClick={() => onNavigate('gonogo')}>View agenda →</span></div>
+          </div>
+        </div>
+
+        <div className="panel panel-success" style={{ marginTop: '24px' }}>
+          <div className="panel-title">Launch Readiness Assessment</div>
+          US/Canada launch is fully ready. LATAM rollout may be decoupled to a follow-on launch window (2–4 weeks post-GA). Decision will be confirmed at Go/No-Go on Mar 25.
+        </div>
+      </div>
+    </div>
+  )
+}
+
+
+function LaunchHome({ onNavigate }) {
+  return (
+    <div>
+      <h1 className="page-title">🚀 ELD Compliance 2.0 — Launch Hub</h1>
+      <div className="page-content">
+        <div className="panel panel-info">
+          <div className="panel-title">Launch Status</div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
+            <span className="lozenge lozenge-bold-info">TIER 1</span>
+            <span className="lozenge lozenge-bold-success">ON TRACK</span>
+            <span style={{ fontSize: '13px' }}>
+              <strong>Target Launch:</strong> March 28, 2026 &nbsp;·&nbsp;
+              <strong>Product Area:</strong> Fleet Safety &nbsp;·&nbsp;
+              <strong>PM Owner:</strong> <span className="mention">@Sarah Chen</span> &nbsp;·&nbsp;
+              <strong>Ops Lead:</strong> <span className="mention">@Brian Miller</span>
+            </span>
+          </div>
+        </div>
+
+        {/* 5-Stage Lifecycle Tracker */}
+        <h1>Lifecycle Stage</h1>
+        <div className="stage-tracker">
+          <div className="stage-item completed">
+            ✓ Discover
+            <span className="stage-item-label">Completed Jan 12</span>
+          </div>
+          <div className="stage-item completed">
+            ✓ Define
+            <span className="stage-item-label">Completed Jan 30</span>
+          </div>
+          <div className="stage-item completed">
+            ✓ Build
+            <span className="stage-item-label">Completed Mar 10</span>
+          </div>
+          <div className="stage-item current">
+            ● Launch
+            <span className="stage-item-label">In Progress</span>
+          </div>
+          <div className="stage-item upcoming">
+            ○ Review
+            <span className="stage-item-label">Post-Launch</span>
+          </div>
+        </div>
+
+        {/* Key Metrics */}
+        <div className="stat-row">
+          <div className="stat-card">
+            <div className="stat-value">18</div>
+            <div className="stat-label">Days to Launch</div>
+          </div>
+          <div className="stat-card">
+            <div className="stat-value">5/6</div>
+            <div className="stat-label">Stakeholder Sign-offs</div>
+          </div>
+          <div className="stat-card">
+            <div className="stat-value">1</div>
+            <div className="stat-label">Open Blockers</div>
+          </div>
+          <div className="stat-card">
+            <div className="stat-value">12,400</div>
+            <div className="stat-label">Drivers Impacted</div>
+          </div>
+        </div>
+
+        {/* Dashboard Grid */}
+        <div className="dashboard-grid">
+          {/* Stakeholder Sign-offs */}
+          <div className="dashboard-card">
+            <div className="dashboard-card-title">Stakeholder Sign-offs</div>
+            <div className="signoff-row">
+              <span className="avatar avatar-blue">SC</span>
+              <span className="signoff-name">Sarah Chen</span>
+              <span className="signoff-role">PM Lead</span>
+              <span className="lozenge lozenge-success">APPROVED</span>
+              <span className="signoff-date">Mar 5</span>
+            </div>
+            <div className="signoff-row">
+              <span className="avatar avatar-purple">JR</span>
+              <span className="signoff-name">Jamie Rivera</span>
+              <span className="signoff-role">PMM Lead</span>
+              <span className="lozenge lozenge-success">APPROVED</span>
+              <span className="signoff-date">Mar 6</span>
+            </div>
+            <div className="signoff-row">
+              <span className="avatar avatar-green">MK</span>
+              <span className="signoff-name">Marcus Kim</span>
+              <span className="signoff-role">Sales Enablement</span>
+              <span className="lozenge lozenge-success">APPROVED</span>
+              <span className="signoff-date">Mar 6</span>
+            </div>
+            <div className="signoff-row">
+              <span className="avatar avatar-teal">LP</span>
+              <span className="signoff-name">Lisa Park</span>
+              <span className="signoff-role">Support Lead</span>
+              <span className="lozenge lozenge-success">APPROVED</span>
+              <span className="signoff-date">Mar 7</span>
+            </div>
+            <div className="signoff-row">
+              <span className="avatar avatar-red">DT</span>
+              <span className="signoff-name">David Torres</span>
+              <span className="signoff-role">Eng Lead</span>
+              <span className="lozenge lozenge-success">APPROVED</span>
+              <span className="signoff-date">Mar 7</span>
+            </div>
+            <div className="signoff-row">
+              <span className="avatar avatar-yellow">AW</span>
+              <span className="signoff-name">Ana Whitfield</span>
+              <span className="signoff-role">Global Ops</span>
+              <span className="lozenge lozenge-moved">PENDING</span>
+              <span className="signoff-date">—</span>
+            </div>
+            <p style={{ fontSize: '12px', marginTop: '8px' }}>
+              <span className="page-link" onClick={() => onNavigate('signoffs')}>View full sign-off details →</span>
+            </p>
+          </div>
+
+          {/* Open Blockers */}
+          <div className="dashboard-card">
+            <div className="dashboard-card-title">Open Blockers</div>
+            <div className="panel panel-warning" style={{ margin: '0 0 12px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start' }}>
+                <div>
+                  <strong>Global Market Flag: LATAM Region</strong>
+                  <p style={{ fontSize: '12px', margin: '4px 0 0' }}>
+                    LATAM regulatory review pending — Spanish-language driver training materials not yet approved by Mexico compliance team. Blocking global rollout to MX fleet customers.
+                  </p>
+                </div>
+                <span className="lozenge lozenge-bold-warning">BLOCKING</span>
+              </div>
+              <p style={{ fontSize: '12px', margin: '8px 0 0', color: 'var(--neutral-400)' }}>
+                Owner: <span className="mention">@Ana Whitfield</span> · ETA: Mar 15 · Escalated to <span className="mention">@VP Global Ops</span>
+              </p>
+            </div>
+
+            <div className="dashboard-card-title" style={{ marginTop: '16px' }}>Recently Resolved</div>
+            <div style={{ fontSize: '13px', padding: '6px 0', color: 'var(--neutral-400)' }}>
+              <span style={{ textDecoration: 'line-through' }}>API rate limiting issue on HOS endpoint</span>
+              <span className="lozenge lozenge-success" style={{ marginLeft: '8px' }}>RESOLVED</span>
+              <span style={{ fontSize: '11px', marginLeft: '8px' }}>Mar 5</span>
+            </div>
+            <div style={{ fontSize: '13px', padding: '6px 0', color: 'var(--neutral-400)' }}>
+              <span style={{ textDecoration: 'line-through' }}>PMM content review — driver notification copy</span>
+              <span className="lozenge lozenge-success" style={{ marginLeft: '8px' }}>RESOLVED</span>
+              <span style={{ fontSize: '11px', marginLeft: '8px' }}>Mar 3</span>
+            </div>
+          </div>
+
+          {/* Key Milestones */}
+          <div className="dashboard-card dashboard-card-full">
+            <div className="dashboard-card-title">Key Milestones</div>
+            <div className="timeline">
+              <div className="timeline-item">
+                <div className="timeline-dot done">✓</div>
+                <div className="timeline-content">
+                  <div className="timeline-date">Jan 12, 2026</div>
+                  <div className="timeline-title">Discovery Complete — Opportunity Brief Approved</div>
+                  <div className="timeline-detail">Product Director sign-off on ELD compliance gap analysis. 47 customer interviews completed.</div>
+                </div>
+              </div>
+              <div className="timeline-item">
+                <div className="timeline-dot done">✓</div>
+                <div className="timeline-content">
+                  <div className="timeline-date">Jan 30, 2026</div>
+                  <div className="timeline-title">Define Complete — PRD Finalized, Dependencies Confirmed</div>
+                  <div className="timeline-detail">Scope locked. PMM alignment brief sent. TPM handoff to engineering sprints.</div>
+                </div>
+              </div>
+              <div className="timeline-item">
+                <div className="timeline-dot done">✓</div>
+                <div className="timeline-content">
+                  <div className="timeline-date">Feb 12, 2026</div>
+                  <div className="timeline-title">Date Change Request — 2 Week Slip</div>
+                  <div className="timeline-detail">
+                    Original date Mar 14 → New date Mar 28. DCR protocol triggered. All stakeholders acknowledged within 18 hours.{' '}
+                    <span className="page-link" onClick={() => onNavigate('dcr')}>View DCR →</span>
+                  </div>
+                </div>
+              </div>
+              <div className="timeline-item">
+                <div className="timeline-dot done">✓</div>
+                <div className="timeline-content">
+                  <div className="timeline-date">Mar 10, 2026</div>
+                  <div className="timeline-title">Build Complete — Launch Readiness Checklist Initiated</div>
+                  <div className="timeline-detail">All engineering work merged. QA sign-off complete. Staging environment verified.</div>
+                </div>
+              </div>
+              <div className="timeline-item">
+                <div className="timeline-dot current">●</div>
+                <div className="timeline-content">
+                  <div className="timeline-date">Mar 25, 2026</div>
+                  <div className="timeline-title">Go/No-Go Meeting — T-72 Hours</div>
+                  <div className="timeline-detail">
+                    Product Director + PMM Lead confirm launch. 30-minute structured review.{' '}
+                    <span className="page-link" onClick={() => onNavigate('gonogo')}>View agenda →</span>
+                  </div>
+                </div>
+              </div>
+              <div className="timeline-item">
+                <div className="timeline-dot upcoming">○</div>
+                <div className="timeline-content">
+                  <div className="timeline-date">Mar 28, 2026</div>
+                  <div className="timeline-title">🚀 Launch Day — ELD Compliance 2.0 GA</div>
+                  <div className="timeline-detail">Phased rollout: 10% → 50% → 100% over 48 hours. War room active 8am–6pm PT.</div>
+                </div>
+              </div>
+              <div className="timeline-item">
+                <div className="timeline-dot upcoming">○</div>
+                <div className="timeline-content">
+                  <div className="timeline-date">Apr 11, 2026</div>
+                  <div className="timeline-title">Post-Launch Review — 2 Week Retro</div>
+                  <div className="timeline-detail">Adoption metrics review, lessons captured, fed into Q2 planning cycle.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Quick Links */}
+        <h1>Quick Links</h1>
+        <div className="dashboard-grid">
+          <div className="dashboard-card" style={{ cursor: 'pointer' }} onClick={() => onNavigate('prd')}>
+            <div style={{ fontSize: '20px', marginBottom: '8px' }}>📄</div>
+            <strong>Product Requirements Document</strong>
+            <p style={{ fontSize: '12px', color: 'var(--neutral-300)', margin: '4px 0 0' }}>Full PRD with user stories, requirements matrix, and success criteria</p>
+          </div>
+          <div className="dashboard-card" style={{ cursor: 'pointer' }} onClick={() => onNavigate('checklist')}>
+            <div style={{ fontSize: '20px', marginBottom: '8px' }}>✅</div>
+            <strong>Launch Readiness Checklist</strong>
+            <p style={{ fontSize: '12px', color: 'var(--neutral-300)', margin: '4px 0 0' }}>Stage-gate checklist — 14/17 items complete</p>
+          </div>
+          <div className="dashboard-card" style={{ cursor: 'pointer' }} onClick={() => onNavigate('training')}>
+            <div style={{ fontSize: '20px', marginBottom: '8px' }}>📚</div>
+            <strong>Training Materials</strong>
+            <p style={{ fontSize: '12px', color: 'var(--neutral-300)', margin: '4px 0 0' }}>Driver training, CS enablement, Sales talk track, Support FAQ</p>
+          </div>
+          <div className="dashboard-card" style={{ cursor: 'pointer' }} onClick={() => onNavigate('feature')}>
+            <div style={{ fontSize: '20px', marginBottom: '8px' }}>📷</div>
+            <strong>Feature Overview & Screenshots</strong>
+            <p style={{ fontSize: '12px', color: 'var(--neutral-300)', margin: '4px 0 0' }}>Driver app, fleet manager dashboard, and admin settings UIs</p>
+          </div>
+        </div>
+
+        {/* Recent Activity */}
+        <h1>Recent Activity</h1>
+        <div className="activity-item">
+          <span className="avatar avatar-teal">BM</span>
+          <span className="activity-text"><span className="mention">@Brian Miller</span> updated Launch Readiness Checklist — marked "Sales Enablement Complete"</span>
+          <span className="activity-time">2 hours ago</span>
+        </div>
+        <div className="activity-item">
+          <span className="avatar avatar-purple">JR</span>
+          <span className="activity-text"><span className="mention">@Jamie Rivera</span> approved stakeholder sign-off (PMM Lead)</span>
+          <span className="activity-time">Yesterday</span>
+        </div>
+        <div className="activity-item">
+          <span className="avatar avatar-green">MK</span>
+          <span className="activity-text"><span className="mention">@Marcus Kim</span> uploaded final Sales talk track to Training Materials</span>
+          <span className="activity-time">Yesterday</span>
+        </div>
+        <div className="activity-item">
+          <span className="avatar avatar-blue">SC</span>
+          <span className="activity-text"><span className="mention">@Sarah Chen</span> confirmed Go/No-Go meeting agenda for Mar 25</span>
+          <span className="activity-time">2 days ago</span>
+        </div>
+        <div className="activity-item">
+          <span className="avatar avatar-red">DT</span>
+          <span className="activity-text"><span className="mention">@David Torres</span> marked Build stage complete — all PRs merged, QA signed off</span>
+          <span className="activity-time">3 days ago</span>
+        </div>
+        <div className="activity-item">
+          <span className="avatar avatar-yellow">AW</span>
+          <span className="activity-text"><span className="mention">@Ana Whitfield</span> flagged LATAM compliance blocker — escalated to VP Global Ops</span>
+          <span className="activity-time">4 days ago</span>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+
+function PRD({ onNavigate }) {
+  return (
+    <div>
+      <h1 className="page-title">📄 Product Requirements Document</h1>
+      <p style={{ color: 'var(--neutral-300)', fontSize: '13px', marginBottom: '16px' }}>ELD Compliance 2.0 — Hours of Service Redesign</p>
+      <div className="page-content">
+        <div className="properties-panel">
+          <div className="properties-row">
+            <div className="properties-key">Status</div>
+            <div className="properties-value"><span className="lozenge lozenge-bold-success">APPROVED</span></div>
+          </div>
+          <div className="properties-row">
+            <div className="properties-key">PM Owner</div>
+            <div className="properties-value"><span className="mention">@Sarah Chen</span></div>
+          </div>
+          <div className="properties-row">
+            <div className="properties-key">Eng Lead</div>
+            <div className="properties-value"><span className="mention">@David Torres</span></div>
+          </div>
+          <div className="properties-row">
+            <div className="properties-key">Design Lead</div>
+            <div className="properties-value"><span className="mention">@Priya Patel</span></div>
+          </div>
+          <div className="properties-row">
+            <div className="properties-key">Launch Tier</div>
+            <div className="properties-value"><span className="lozenge lozenge-bold-info">TIER 1</span> — All customers, major workflow change</div>
+          </div>
+          <div className="properties-row">
+            <div className="properties-key">Target Launch</div>
+            <div className="properties-value">March 28, 2026 <span style={{ color: 'var(--neutral-200)', fontSize: '12px' }}>(revised from Mar 14 via <span className="page-link" onClick={() => onNavigate('dcr')}>DCR-2026-017</span>)</span></div>
+          </div>
+          <div className="properties-row">
+            <div className="properties-key">Approved By</div>
+            <div className="properties-value"><span className="mention">@Caroline Barragan</span> (Product Director) — Jan 30, 2026</div>
+          </div>
+        </div>
+
+        <h1>Problem Statement</h1>
+        <p>
+          Our current ELD (Electronic Logging Device) compliance module was built in 2021 and has not kept pace with
+          regulatory changes from FMCSA (Federal Motor Carrier Safety Administration). Fleet managers report three critical gaps:
+        </p>
+        <ol>
+          <li><strong>Hours of Service (HOS) violations are not surfaced proactively.</strong> Drivers discover violations only after they occur, resulting in CSA score impact and potential FMCSA fines averaging $16,000 per violation.</li>
+          <li><strong>The driver-side HOS interface is confusing.</strong> 34% of support tickets related to ELD are "how do I read my remaining hours?" — a UX failure, not a training failure.</li>
+          <li><strong>Fleet managers lack real-time visibility</strong> into which drivers are approaching HOS limits, making proactive dispatch adjustments impossible.</li>
+        </ol>
+
+        <div className="panel panel-note">
+          <div className="panel-title">Discovery Source</div>
+          47 customer interviews (Jan 2026), 1,200+ support tickets analyzed, FMCSA regulatory review, competitive analysis (Samsara, KeepTruckin).
+          See <span className="page-link" onClick={() => onNavigate('home')}>Opportunity Brief</span> for full discovery documentation.
+        </div>
+
+        <h1>Goals & Success Metrics</h1>
+        <table className="confluence-table">
+          <thead>
+            <tr>
+              <th>Goal</th>
+              <th>Metric</th>
+              <th>Target</th>
+              <th>Measurement</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Reduce HOS violations</td>
+              <td>Violation rate per 1,000 driving hours</td>
+              <td>30% reduction within 90 days of launch</td>
+              <td>Analytics dashboard (existing)</td>
+            </tr>
+            <tr>
+              <td>Improve driver UX</td>
+              <td>ELD-related support ticket volume</td>
+              <td>40% reduction within 60 days</td>
+              <td>Zendesk tag: <code>eld-ux</code></td>
+            </tr>
+            <tr>
+              <td>Enable proactive dispatch</td>
+              <td>Fleet manager dashboard adoption</td>
+              <td>60% of fleets &gt;50 drivers using within 90 days</td>
+              <td>Feature flag + usage analytics</td>
+            </tr>
+            <tr>
+              <td>Regulatory compliance</td>
+              <td>FMCSA audit pass rate</td>
+              <td>99.5% compliance on HOS records</td>
+              <td>Compliance audit tool</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h1>User Stories</h1>
+
+        <h2>Driver (Mobile App)</h2>
+        <table className="confluence-table">
+          <thead>
+            <tr><th>ID</th><th>Story</th><th>Priority</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>US-101</td>
+              <td>As a driver, I want to see my remaining HOS hours in a clear, glanceable format so I can plan my driving day without guessing.</td>
+              <td><span className="lozenge lozenge-bold-error">P0</span></td>
+            </tr>
+            <tr>
+              <td>US-102</td>
+              <td>As a driver, I want to receive a push notification 30 minutes before I hit my HOS limit so I can find a safe stopping point.</td>
+              <td><span className="lozenge lozenge-bold-error">P0</span></td>
+            </tr>
+            <tr>
+              <td>US-103</td>
+              <td>As a driver, I want the app to auto-suggest the nearest compliant rest stop when I'm approaching my limit.</td>
+              <td><span className="lozenge lozenge-info">P1</span></td>
+            </tr>
+            <tr>
+              <td>US-104</td>
+              <td>As a driver, I want to see a visual timeline of my drive/rest cycle for the current 7-day period.</td>
+              <td><span className="lozenge lozenge-info">P1</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Fleet Manager (Dashboard)</h2>
+        <table className="confluence-table">
+          <thead>
+            <tr><th>ID</th><th>Story</th><th>Priority</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>US-201</td>
+              <td>As a fleet manager, I want a real-time view of all drivers' HOS status so I can adjust dispatch before violations occur.</td>
+              <td><span className="lozenge lozenge-bold-error">P0</span></td>
+            </tr>
+            <tr>
+              <td>US-202</td>
+              <td>As a fleet manager, I want automated alerts when any driver is within 1 hour of their HOS limit.</td>
+              <td><span className="lozenge lozenge-bold-error">P0</span></td>
+            </tr>
+            <tr>
+              <td>US-203</td>
+              <td>As a fleet manager, I want a weekly HOS compliance report I can export for my records.</td>
+              <td><span className="lozenge lozenge-info">P1</span></td>
+            </tr>
+            <tr>
+              <td>US-204</td>
+              <td>As a fleet manager, I want to configure custom HOS thresholds per driver group (e.g., hazmat vs. standard).</td>
+              <td><span className="lozenge lozenge-default">P2</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h1>Dependencies</h1>
+        <div className="panel panel-warning">
+          <div className="panel-title">Cross-Team Dependencies</div>
+          <ul>
+            <li><strong>Platform Team:</strong> HOS calculation API v3 — requires new endpoints for real-time streaming. <span className="lozenge lozenge-success">DELIVERED</span></li>
+            <li><strong>Mobile Team:</strong> Push notification infrastructure upgrade for location-aware triggers. <span className="lozenge lozenge-success">DELIVERED</span></li>
+            <li><strong>Data Team:</strong> HOS analytics pipeline — new events for dashboard metrics. <span className="lozenge lozenge-success">DELIVERED</span></li>
+            <li><strong>Global Ops:</strong> LATAM regulatory review for MX/BR-specific HOS rules. <span className="lozenge lozenge-moved">IN PROGRESS</span></li>
+          </ul>
+        </div>
+
+        <h1>Out of Scope</h1>
+        <ul>
+          <li>Canadian HOS regulations (ELD mandate differences) — planned for Q3 2026</li>
+          <li>Integration with third-party TMS systems — separate initiative under Asset Tracking</li>
+          <li>DVIR (Driver Vehicle Inspection Report) redesign — parallel project, Fleet Safety Q2</li>
+          <li>Offline-first mode for areas with no cellular connectivity — backlog, pending feasibility</li>
+        </ul>
+
+        <h1>Risks & Mitigations</h1>
+        <table className="confluence-table">
+          <thead>
+            <tr><th>Risk</th><th>Impact</th><th>Likelihood</th><th>Mitigation</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>LATAM regulatory approval delayed</td>
+              <td><span className="lozenge lozenge-error">HIGH</span></td>
+              <td><span className="lozenge lozenge-moved">MEDIUM</span></td>
+              <td>Decouple LATAM rollout — launch US/CAN first, LATAM follows 2–4 weeks later</td>
+            </tr>
+            <tr>
+              <td>Driver app adoption resistance</td>
+              <td><span className="lozenge lozenge-moved">MEDIUM</span></td>
+              <td><span className="lozenge lozenge-moved">MEDIUM</span></td>
+              <td>In-app walkthrough + fleet manager push. CS team conducts onboarding webinars.</td>
+            </tr>
+            <tr>
+              <td>HOS calculation edge cases (split sleeper berth)</td>
+              <td><span className="lozenge lozenge-error">HIGH</span></td>
+              <td><span className="lozenge lozenge-default">LOW</span></td>
+              <td>Extensive QA test suite (247 edge case scenarios). FMCSA compliance validation.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  )
+}
+
+
+function PostLaunchReview() {
+  return (
+    <div>
+      <h1 className="page-title">📈 Post-Launch Review</h1>
+      <p style={{ color: 'var(--neutral-300)', fontSize: '13px', marginBottom: '16px' }}>Scheduled: April 11, 2026 (T+14 days) · Facilitated by Embedded Ops</p>
+      <div className="page-content">
+        <div className="panel panel-note">
+          <div className="panel-title">Review Status</div>
+          This page is pre-populated with the review framework. Metrics and retrospective findings will be completed post-launch. Per the Product Operating System, Embedded Ops runs the retro and Central Ops maintains the centralized lessons log.
+        </div>
+
+        <div className="properties-panel">
+          <div className="properties-row"><div className="properties-key">Review Date</div><div className="properties-value">April 11, 2026 · 2 weeks post-launch</div></div>
+          <div className="properties-row"><div className="properties-key">Facilitator</div><div className="properties-value"><span className="mention">@Brian Miller</span> (Product Ops)</div></div>
+          <div className="properties-row"><div className="properties-key">Attendees</div><div className="properties-value">Full launch team — PM, Eng, PMM, Sales, Support, Global Ops</div></div>
+          <div className="properties-row"><div className="properties-key">Lessons Log</div><div className="properties-value">Central Ops Lessons Database (Jira Insight)</div></div>
+        </div>
+
+        <h1>Adoption Metrics — Targets</h1>
+        <table className="confluence-table">
+          <thead><tr><th>Metric</th><th>Target (T+14)</th><th>Target (T+90)</th><th>Actual</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>HOS violation rate reduction</td><td>15%</td><td>30%</td><td><em>Pending</em></td><td><span className="lozenge lozenge-default">T+14</span></td></tr>
+            <tr><td>ELD support ticket reduction</td><td>20%</td><td>40%</td><td><em>Pending</em></td><td><span className="lozenge lozenge-default">T+14</span></td></tr>
+            <tr><td>Fleet manager dashboard adoption (&gt;50 drivers)</td><td>25%</td><td>60%</td><td><em>Pending</em></td><td><span className="lozenge lozenge-default">T+14</span></td></tr>
+            <tr><td>Driver app HOS screen daily active usage</td><td>40%</td><td>70%</td><td><em>Pending</em></td><td><span className="lozenge lozenge-default">T+14</span></td></tr>
+            <tr><td>FMCSA compliance rate</td><td>99%</td><td>99.5%</td><td><em>Pending</em></td><td><span className="lozenge lozenge-default">T+14</span></td></tr>
+          </tbody>
+        </table>
+
+        <h1>Process Health Metrics</h1>
+        <table className="confluence-table">
+          <thead><tr><th>Metric</th><th>Result</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Lifecycle model followed (5 stages)</td><td><span className="lozenge lozenge-success">YES</span></td><td>All 5 stages completed. Discover → Define → Build → Launch → Review.</td></tr>
+            <tr><td>Date change via DCR protocol</td><td><span className="lozenge lozenge-success">YES</span></td><td>DCR-2026-017 processed in 18 hours. All stakeholders acknowledged.</td></tr>
+            <tr><td>Stakeholder touchpoints completed (3 of 3)</td><td><span className="lozenge lozenge-success">YES</span></td><td>PMM Alignment Brief (Feb 28), Launch Briefing Package (Mar 7), Go/No-Go (Mar 25).</td></tr>
+            <tr><td>Launch surprise escalations</td><td><span className="lozenge lozenge-success">0</span></td><td>No unannounced launch issues reported by PMM, Sales, or Support.</td></tr>
+            <tr><td>Exception protocol triggered</td><td><span className="lozenge lozenge-moved">PARTIAL</span></td><td>LATAM decoupled via documented exception. Not a system failure — planned contingency.</td></tr>
+          </tbody>
+        </table>
+
+        <h1>Retrospective — Template</h1>
+
+        <h2>What Went Well</h2>
+        <div style={{ background: 'var(--green-100)', borderRadius: '4px', padding: '16px', minHeight: '80px', marginBottom: '16px' }}>
+          <p style={{ color: 'var(--green-700)', fontStyle: 'italic', margin: 0 }}>To be completed during retro session. Examples of prompts:</p>
+          <ul style={{ color: 'var(--green-700)', fontSize: '13px', marginTop: '8px' }}>
+            <li>DCR protocol worked smoothly — stakeholder alignment in 18 hours</li>
+            <li>Zero surprise launches — PMM, Sales, Support all felt informed</li>
+            <li>Stage-gate checklist caught LATAM blocker early in process</li>
+            <li>Phased rollout gave engineering confidence to ship</li>
+          </ul>
+        </div>
+
+        <h2>What Could Be Improved</h2>
+        <div style={{ background: 'var(--yellow-100)', borderRadius: '4px', padding: '16px', minHeight: '80px', marginBottom: '16px' }}>
+          <p style={{ color: 'var(--yellow-700)', fontStyle: 'italic', margin: 0 }}>To be completed during retro session. Examples of prompts:</p>
+          <ul style={{ color: 'var(--yellow-700)', fontSize: '13px', marginTop: '8px' }}>
+            <li>LATAM regulatory complexity underestimated at Define stage</li>
+            <li>Push notification dependency could have been flagged earlier in dependency mapping</li>
+            <li>Driver training video production took longer than expected</li>
+          </ul>
+        </div>
+
+        <h2>Action Items for the System</h2>
+        <div style={{ background: 'var(--blue-50)', borderRadius: '4px', padding: '16px', minHeight: '80px' }}>
+          <p style={{ color: 'var(--blue-800)', fontStyle: 'italic', margin: 0 }}>Improvements to feed back into the Product Operating System:</p>
+          <ul style={{ color: 'var(--blue-800)', fontSize: '13px', marginTop: '8px' }}>
+            <li>Add "global regulatory complexity check" to Define stage checklist</li>
+            <li>Add mobile platform dependency review to technical design template</li>
+            <li>Consider adding T-6 week content production milestone for Tier 1 launches</li>
+          </ul>
+        </div>
+
+        <div className="panel panel-info" style={{ marginTop: '24px' }}>
+          <div className="panel-title">Learning Velocity</div>
+          "Learning velocity — how fast we learn what works and what doesn't — is the engine of the entire system. Post-launch reviews are how we build it." Findings from this review will be logged in the Central Ops Lessons Database and incorporated into Q2 2026 planning cycle.
+        </div>
+      </div>
+    </div>
+  )
+}
+
+
+function StakeholderSignoffs() {
+  return (
+    <div>
+      <h1 className="page-title">✍️ Stakeholder Sign-offs</h1>
+      <div className="page-content">
+        <div className="panel panel-info">
+          <div className="panel-title">Sign-off Status</div>
+          <strong>5 of 6</strong> stakeholders have signed off. Remaining: Global Ops (blocked on LATAM compliance review).
+        </div>
+
+        <h1>Sign-off Tracker</h1>
+        <table className="confluence-table">
+          <thead>
+            <tr><th>Stakeholder</th><th>Role</th><th>Status</th><th>Date</th><th>Notes</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span className="mention">@Sarah Chen</span></td>
+              <td>PM Lead</td>
+              <td><span className="lozenge lozenge-bold-success">APPROVED</span></td>
+              <td>Mar 5, 2026</td>
+              <td>All P0 user stories delivered. P2 items deferred to follow-on release.</td>
+            </tr>
+            <tr>
+              <td><span className="mention">@Jamie Rivera</span></td>
+              <td>PMM Lead</td>
+              <td><span className="lozenge lozenge-bold-success">APPROVED</span></td>
+              <td>Mar 6, 2026</td>
+              <td>All comms drafted, reviewed by Legal. Sales enablement complete.</td>
+            </tr>
+            <tr>
+              <td><span className="mention">@Marcus Kim</span></td>
+              <td>Sales Enablement</td>
+              <td><span className="lozenge lozenge-bold-success">APPROVED</span></td>
+              <td>Mar 6, 2026</td>
+              <td>3 training sessions delivered. 94% attendance. Talk tracks distributed.</td>
+            </tr>
+            <tr>
+              <td><span className="mention">@Lisa Park</span></td>
+              <td>Support Lead</td>
+              <td><span className="lozenge lozenge-bold-success">APPROVED</span></td>
+              <td>Mar 7, 2026</td>
+              <td>Help center articles live. Support team trained. Escalation path defined.</td>
+            </tr>
+            <tr>
+              <td><span className="mention">@David Torres</span></td>
+              <td>Eng Lead</td>
+              <td><span className="lozenge lozenge-bold-success">APPROVED</span></td>
+              <td>Mar 7, 2026</td>
+              <td>All PRs merged. QA passed. Feature flags and monitoring configured.</td>
+            </tr>
+            <tr>
+              <td><span className="mention">@Ana Whitfield</span></td>
+              <td>Global Ops</td>
+              <td><span className="lozenge lozenge-bold-warning">PENDING</span></td>
+              <td>—</td>
+              <td>LATAM regulatory review in progress. ETA Mar 15. Will sign off for US/CAN only if LATAM not resolved by Mar 20.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h1>RACI Matrix</h1>
+        <table className="confluence-table">
+          <thead>
+            <tr><th>Activity</th><th>PM</th><th>PMM</th><th>Sales</th><th>Support</th><th>Eng</th><th>Global Ops</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>PRD & scope definition</td><td><strong>R/A</strong></td><td>I</td><td>I</td><td>I</td><td>C</td><td>C</td></tr>
+            <tr><td>Launch tier designation</td><td>R</td><td>C</td><td>I</td><td>I</td><td>I</td><td>C</td></tr>
+            <tr><td>GTM messaging</td><td>C</td><td><strong>R/A</strong></td><td>C</td><td>I</td><td>I</td><td>C</td></tr>
+            <tr><td>Sales enablement</td><td>I</td><td>C</td><td><strong>R/A</strong></td><td>I</td><td>I</td><td>I</td></tr>
+            <tr><td>Support readiness</td><td>I</td><td>C</td><td>I</td><td><strong>R/A</strong></td><td>C</td><td>I</td></tr>
+            <tr><td>Engineering delivery</td><td>I</td><td>I</td><td>I</td><td>I</td><td><strong>R/A</strong></td><td>I</td></tr>
+            <tr><td>Global compliance</td><td>I</td><td>I</td><td>I</td><td>I</td><td>C</td><td><strong>R/A</strong></td></tr>
+            <tr><td>Go/No-Go decision</td><td><strong>A</strong></td><td>R</td><td>C</td><td>C</td><td>C</td><td>C</td></tr>
+          </tbody>
+        </table>
+        <p style={{ fontSize: '12px', color: 'var(--neutral-300)' }}>R = Responsible · A = Accountable · C = Consulted · I = Informed</p>
+      </div>
+    </div>
+  )
+}
+
+
+function TrainingMaterials() {
+  return (
+    <div>
+      <h1 className="page-title">📚 Training Materials</h1>
+      <div className="page-content">
+        <div className="panel panel-info">
+          <div className="panel-title">Tier 1 Training Requirements</div>
+          Full training required for Sales, CS, Support, and drivers. All training sessions completed as of Mar 7. Driver training materials ready for launch day distribution.
+        </div>
+
+        <h1>Training Completion Status</h1>
+        <table className="confluence-table">
+          <thead><tr><th>Audience</th><th>Format</th><th>Status</th><th>Completion</th><th>Date</th></tr></thead>
+          <tbody>
+            <tr><td>Sales Team</td><td>Live training (45 min) + talk track</td><td><span className="lozenge lozenge-success">COMPLETE</span></td><td>94% attendance</td><td>Mar 5</td></tr>
+            <tr><td>CS Team</td><td>Live training (45 min) + account playbook</td><td><span className="lozenge lozenge-success">COMPLETE</span></td><td>91% attendance</td><td>Mar 6</td></tr>
+            <tr><td>Support Team</td><td>Live training (30 min) + FAQ + escalation guide</td><td><span className="lozenge lozenge-success">COMPLETE</span></td><td>100% attendance</td><td>Mar 7</td></tr>
+            <tr><td>Drivers (English)</td><td>In-app walkthrough + video (2 min)</td><td><span className="lozenge lozenge-info">READY</span></td><td>Launches with feature</td><td>Mar 28</td></tr>
+            <tr><td>Drivers (Spanish)</td><td>In-app walkthrough + video (2 min)</td><td><span className="lozenge lozenge-moved">PENDING</span></td><td>Awaiting LATAM approval</td><td>TBD</td></tr>
+          </tbody>
+        </table>
+
+        <h1>Sales Talk Track (Summary)</h1>
+        <div style={{ background: 'var(--neutral-10)', border: '1px solid var(--neutral-40)', borderRadius: '8px', padding: '20px' }}>
+          <h3 style={{ marginTop: 0 }}>Opening</h3>
+          <p><em>"Your drivers are already on the road — shouldn't your compliance system be working just as hard? Our new HOS experience doesn't just track hours. It prevents violations before they happen."</em></p>
+          <h3>Key Proof Points</h3>
+          <ul>
+            <li>Beta customers saw <strong>28% fewer HOS violations</strong> in the first 30 days</li>
+            <li>34% reduction in ELD-related support tickets during beta</li>
+            <li>99.5% FMCSA compliance rate — highest in the industry</li>
+            <li>Only platform with proactive, location-aware HOS alerts</li>
+          </ul>
+          <h3>Competitive Positioning vs. Samsara</h3>
+          <ul>
+            <li>Samsara: reactive-only HOS tracking, no proactive alerts, no rest stop suggestions</li>
+            <li>Platform: proactive alerts + location-aware rest stop suggestions + configurable thresholds by driver group</li>
+            <li>Our advantage: only platform that lets fleet managers see real-time HOS status across all drivers in a single view</li>
+          </ul>
+          <h3>Objection Handling</h3>
+          <ul>
+            <li><strong>"We're happy with our current ELD."</strong> → "Are your drivers discovering violations after they happen, or before? Our beta data shows a 28% reduction in violations with proactive alerts alone."</li>
+            <li><strong>"Our drivers won't use a new interface."</strong> → "The new HOS screen was designed based on 47 driver interviews. It requires zero training — drivers see their remaining hours at a glance."</li>
+          </ul>
+          <p style={{ fontSize: '12px', color: 'var(--neutral-200)' }}>Full 2-page talk track: Uploaded to #sales-enablement and LMS · Owner: <span className="mention">@Marcus Kim</span></p>
+        </div>
+
+        <h1>Support FAQ (Top 10)</h1>
+        <div style={{ background: 'var(--neutral-10)', border: '1px solid var(--neutral-40)', borderRadius: '8px', padding: '20px' }}>
+          {[
+            { q: 'Where did the old HOS screen go?', a: 'The old HOS screen has been replaced by the new HOS Dashboard. All the same data is available in a clearer format. The 7-day timeline replaces the old log view.' },
+            { q: 'Can drivers turn off push notifications?', a: 'Yes, drivers can manage notification preferences in Settings > Notifications > HOS Alerts. Fleet admins can enforce mandatory alerts via Admin Settings.' },
+            { q: 'How accurate is the "remaining drive time" calculation?', a: 'The calculation uses the HOS API v3 engine, which has been validated against 247 edge case scenarios with 99.5% FMCSA compliance. Split sleeper berth and personal conveyance are fully supported.' },
+            { q: 'When will this be available in Mexico?', a: 'LATAM availability is planned for April 2026, pending regulatory review. US and Canada customers have full access now.' },
+            { q: 'Does this work offline?', a: 'The HOS dashboard requires an active connection to display real-time data. Offline support is on the roadmap but not available in this release.' },
+          ].map((item, i) => (
+            <div key={i} style={{ marginBottom: i < 4 ? '16px' : 0, paddingBottom: i < 4 ? '16px' : 0, borderBottom: i < 4 ? '1px solid var(--neutral-40)' : 'none' }}>
+              <p style={{ fontWeight: 600, margin: '0 0 4px' }}>Q{i+1}: {item.q}</p>
+              <p style={{ margin: 0, fontSize: '13px' }}>{item.a}</p>
+            </div>
+          ))}
+          <p style={{ fontSize: '12px', color: 'var(--neutral-200)', marginTop: '16px' }}>Full FAQ (10 items) published to Help Center. Internal version with escalation paths in Support Confluence space. Owner: <span className="mention">@Lisa Park</span></p>
+        </div>
+
+        <h1>Driver In-App Walkthrough</h1>
+        <p>A 3-step in-app walkthrough will appear the first time each driver opens the updated app:</p>
+        <ol>
+          <li><strong>Step 1:</strong> "Here's your new HOS dashboard" — highlights remaining hours display</li>
+          <li><strong>Step 2:</strong> "We'll warn you before you hit your limit" — explains push notification alerts</li>
+          <li><strong>Step 3:</strong> "Check your weekly cycle anytime" — shows 7-day drive/rest timeline</li>
+        </ol>
+        <p style={{ fontSize: '12px', color: 'var(--neutral-300)' }}>Walkthrough can be re-triggered from Settings > Help > "Tour the new HOS experience"</p>
+      </div>
+    </div>
+  )
+}
+
+
+const PAGES = {
+  home: { component: LaunchHome, title: 'ELD Compliance 2.0 — Launch Hub', icon: '🚀', breadcrumb: [] },
+  prd: { component: PRD, title: 'Product Requirements Document', icon: '📄', breadcrumb: ['Launch Hub'] },
+  gtm: { component: GTMPlan, title: 'GTM Launch Plan', icon: '📣', breadcrumb: ['Launch Hub'] },
+  checklist: { component: LaunchChecklist, title: 'Launch Readiness Checklist', icon: '✅', breadcrumb: ['Launch Hub'] },
+  signoffs: { component: StakeholderSignoffs, title: 'Stakeholder Sign-offs', icon: '✍️', breadcrumb: ['Launch Hub'] },
+  kickoff: { component: KickoffMeeting, title: 'Kickoff Meeting — Jan 15, 2026', icon: '📝', breadcrumb: ['Launch Hub', 'Meeting Notes & Decisions'] },
+  dcr: { component: DateChangeRequest, title: 'Date Change Request — Feb 12, 2026', icon: '📝', breadcrumb: ['Launch Hub', 'Meeting Notes & Decisions'] },
+  gonogo: { component: GoNoGo, title: 'Go/No-Go Meeting — Mar 25, 2026', icon: '📝', breadcrumb: ['Launch Hub', 'Meeting Notes & Decisions'] },
+  feature: { component: FeatureOverview, title: 'Feature Overview & Screenshots', icon: '📷', breadcrumb: ['Launch Hub'] },
+  internal: { component: InternalComms, title: 'Internal Communications', icon: '📨', breadcrumb: ['Launch Hub', 'Communications'] },
+  external: { component: ExternalComms, title: 'External Communications', icon: '📨', breadcrumb: ['Launch Hub', 'Communications'] },
+  training: { component: TrainingMaterials, title: 'Training Materials', icon: '📚', breadcrumb: ['Launch Hub'] },
+  review: { component: PostLaunchReview, title: 'Post-Launch Review', icon: '📈', breadcrumb: ['Launch Hub'] },
+}
+
+const SIDEBAR_TREE = [
+  { id: 'home', label: 'ELD Compliance 2.0 — Launch Hub', icon: '🚀', children: [
+    { id: 'prd', label: 'Product Requirements Document', icon: '📄' },
+    { id: 'gtm', label: 'GTM Launch Plan', icon: '📣' },
+    { id: 'checklist', label: 'Launch Readiness Checklist', icon: '✅' },
+    { id: 'signoffs', label: 'Stakeholder Sign-offs', icon: '✍️' },
+    { id: 'meetings', label: 'Meeting Notes & Decisions', icon: '🗂️', children: [
+      { id: 'kickoff', label: 'Kickoff Meeting — Jan 15', icon: '📝' },
+      { id: 'dcr', label: 'Date Change Request — Feb 12', icon: '📝' },
+      { id: 'gonogo', label: 'Go/No-Go Meeting — Mar 25', icon: '📝' },
+    ]},
+    { id: 'feature', label: 'Feature Overview & Screenshots', icon: '📷' },
+    { id: 'comms', label: 'Communications', icon: '📨', children: [
+      { id: 'internal', label: 'Internal Communications', icon: '📨' },
+      { id: 'external', label: 'External Communications', icon: '📨' },
+    ]},
+    { id: 'training', label: 'Training Materials', icon: '📚' },
+    { id: 'review', label: 'Post-Launch Review', icon: '📈' },
+  ]},
+]
+
+function SidebarItem({ item, depth = 0, currentPage, onNavigate }) {
+  const [expanded, setExpanded] = useState(true)
+  const hasChildren = item.children && item.children.length > 0
+  const isPage = !!PAGES[item.id]
+  const isActive = currentPage === item.id
+
+  return (
+    <div className="sidebar-item-group">
+      <div
+        className={`sidebar-item ${isActive ? 'active' : ''} ${isPage ? 'clickable' : ''}`}
+        style={{ paddingLeft: `${12 + depth * 16}px` }}
+        onClick={() => {
+          if (hasChildren) setExpanded(!expanded)
+          if (isPage) onNavigate(item.id)
+        }}
+      >
+        {hasChildren && (
+          <span className={`sidebar-chevron ${expanded ? 'expanded' : ''}`}>›</span>
+        )}
+        {!hasChildren && <span className="sidebar-chevron-spacer" />}
+        <span className="sidebar-icon">{item.icon}</span>
+        <span className="sidebar-label">{item.label}</span>
+      </div>
+      {hasChildren && expanded && (
+        <div className="sidebar-children">
+          {item.children.map(child => (
+            <SidebarItem
+              key={child.id}
+              item={child}
+              depth={depth + 1}
+              currentPage={currentPage}
+              onNavigate={onNavigate}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
+function App() {
+  const [currentPage, setCurrentPage] = useState('home')
+  const page = PAGES[currentPage]
+  const PageComponent = page.component
+
+  return (
+    <div className="app">
+      {/* Header */}
+      <header className="header">
+        <div className="header-left">
+          <div className="header-logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <rect width="24" height="24" rx="4" fill="#fff" fillOpacity="0.2"/>
+              <path d="M7 7h4v4H7V7zm6 0h4v4h-4V7zm-6 6h4v4H7v-4zm6 0h4v4h-4v-4z" fill="#fff"/>
+            </svg>
+          </div>
+          <nav className="header-nav">
+            <span className="header-nav-item active">Spaces</span>
+            <span className="header-nav-item">People</span>
+            <span className="header-nav-item">Templates</span>
+          </nav>
+        </div>
+        <div className="header-center">
+          <div className="header-search">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" opacity="0.5"><path d="M11.742 10.344a6.5 6.5 0 10-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 001.415-1.414l-3.85-3.85a1.007 1.007 0 00-.115-.1zM12 6.5a5.5 5.5 0 11-11 0 5.5 5.5 0 0111 0z"/></svg>
+            <span>Search this space...</span>
+          </div>
+        </div>
+        <div className="header-right">
+          <div className="header-avatar" title="Brian Miller">BM</div>
+        </div>
+      </header>
+
+      <div className="layout">
+        {/* Sidebar */}
+        <aside className="sidebar">
+          <div className="sidebar-space-header">
+            <div className="sidebar-space-icon">🛡️</div>
+            <div>
+              <div className="sidebar-space-name">Fleet Safety — Product Ops</div>
+              <div className="sidebar-space-key">FLTSAFE</div>
+            </div>
+          </div>
+          <div className="sidebar-nav">
+            {SIDEBAR_TREE.map(item => (
+              <SidebarItem
+                key={item.id}
+                item={item}
+                currentPage={currentPage}
+                onNavigate={setCurrentPage}
+              />
+            ))}
+          </div>
+        </aside>
+
+        {/* Main Content */}
+        <main className="content">
+          <div className="content-header">
+            <div className="breadcrumbs">
+              <span className="breadcrumb-item" onClick={() => setCurrentPage('home')}>Fleet Safety — Product Ops</span>
+              {page.breadcrumb.map((crumb, i) => (
+                <React.Fragment key={i}>
+                  <span className="breadcrumb-sep">/</span>
+                  <span className="breadcrumb-item">{crumb}</span>
+                </React.Fragment>
+              ))}
+              <span className="breadcrumb-sep">/</span>
+              <span className="breadcrumb-current">{page.title}</span>
+            </div>
+          </div>
+          <div className="page-container">
+            <PageComponent onNavigate={setCurrentPage} />
+            <div className="page-metadata">
+              <div className="page-meta-item">
+                <span className="meta-avatar">SC</span>
+                <span>Created by <strong>Sarah Chen</strong> · Jan 8, 2026</span>
+              </div>
+              <div className="page-meta-item">
+                <span className="meta-avatar">BM</span>
+                <span>Last updated by <strong>Brian Miller</strong> · Mar 7, 2026</span>
+              </div>
+              <div className="page-labels">
+                <span className="label">eld-compliance</span>
+                <span className="label">tier-1</span>
+                <span className="label">fleet-safety</span>
+                <span className="label">q1-2026</span>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  )
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(React.createElement(React.StrictMode, null, React.createElement(App)));
+
+</script>
+</body>
+</html>
